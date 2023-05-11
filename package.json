@@ -1,0 +1,32 @@
+{
+  "name": "my-app",
+  "version": "0.0.14",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "hattip serve ./hattip-entry.ts --client",
+    "build": "hattip build ./hattip-entry.ts --client"
+  },
+  "keywords": [],
+  "author": "",
+  "devDependencies": {
+    "@hattip/adapter-node": "^0.0.33",
+    "@hattip/vite": "^0.0.33",
+    "autoprefixer": "^10.4.14",
+    "daisyui": "^2.51.6",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.5",
+    "vite-tsconfig-paths": "^4.2.0"
+  },
+  "dependencies": {
+    "@hattip/router": "^0.0.33",
+    "cross-fetch": "^3.1.5",
+    "hattip": "^0.0.33",
+    "solid-js": "^1.7.5",
+    "vike-solid": "^0.0.6",
+    "vite": "^4.3.5",
+    "vite-plugin-ssr": "^0.4.123"
+  }
+}

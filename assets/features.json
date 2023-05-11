@@ -1,0 +1,68 @@
+{
+  "framework": {
+    "label": "Framework",
+    "features": [
+      {
+        "label": "SolidJS",
+        "value": "solid",
+        "selected": true
+      }
+    ]
+  },
+  "auth": {
+    "label": "Auth",
+    "features": [
+      {
+        "label": "none"
+      },
+      {
+        "label": "AuthJS",
+        "value": "authjs",
+        "selected": true
+      }
+    ]
+  },
+  "rpc": {
+    "label": "RPC",
+    "features": [
+      {
+        "label": "none"
+      },
+      {
+        "label": "Telefunc",
+        "value": "telefunc",
+        "selected": true
+      }
+    ]
+  },
+  "server": {
+    "label": "Server",
+    "features": [
+      {
+        "label": "none"
+      },
+      {
+        "label": "Hattip",
+        "value": "hattip",
+        "selected": true
+      },
+      {
+        "label": "Express",
+        "value": "express"
+      }
+    ]
+  },
+  "uikit": {
+    "label": "UI",
+    "features": [
+      {
+        "label": "none"
+      },
+      {
+        "label": "TailwindCSS",
+        "value": "tailwindcss",
+        "selected": true
+      }
+    ]
+  }
+}
