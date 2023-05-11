@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Deplay pages
+name: Deploy pages
 
 permissions:
   contents: write
@@ -33,7 +33,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
     - run: pnpm install --frozen-lockfile
-    - run: pnpm run build
+    - run: pnpm run build:pages
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:

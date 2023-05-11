@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "hattip serve ./hattip-entry.ts --client",
-    "build": "vite build"
+    "build": "vite build",
+    "build:pages": "vite build --mode pages"
   },
   "keywords": [],
   "author": "",
