@@ -5,14 +5,29 @@ import features from "assets/features.json";
 import { createMemo, For } from "solid-js";
 import { createStore } from "solid-js/store";
 
+interface Definition {
+  disabled?: boolean;
+  label: string;
+  features: Feature[];
+}
+
+interface Feature {
+  label: string;
+  value?: string;
+  selected?: boolean;
+  disabled?: boolean;
+}
+
 export default function Page() {
   const keys = Object.keys(features);
   const [state, setState] = createStore<Record<string, string | undefined>>(
     Object.assign(
       {},
-      ...Object.entries(features).map(([ns, fs]) => ({
-        [ns]: fs.features.find((f) => f.selected)?.value,
-      }))
+      ...Object.entries(features as Record<string, Definition>).map(
+        ([ns, fs]) => ({
+          [ns]: fs.features.find((f) => f.selected)?.value,
+        })
+      )
     )
   );
 
@@ -39,16 +54,13 @@ export default function Page() {
       <div class="w-full items-center flex justify-center mt-8">
         <div class="w-4/5 flex flex-col bg-base-300 px-4 py-8 gap-4 rounded-xl shadow-2xl">
           <div class="grid place-items-center grid-cols-2">
-            <For each={Object.entries(features)}>
+            <For each={Object.entries(features as Record<string, Definition>)}>
               {([ns, fs]) => (
                 <FormControl label={fs.label}>
                   <Select
+                    disabled={fs.disabled}
                     onChange={(e) => setState(ns, e.target.value || undefined)}
-                    options={fs.features.map((f) => ({
-                      selected: f.selected,
-                      value: f.value ?? "",
-                      label: f.label,
-                    }))}
+                    options={fs.features}
                   />
                 </FormControl>
               )}

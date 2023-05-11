@@ -6,6 +6,16 @@
         "label": "SolidJS",
         "value": "solid",
         "selected": true
+      },
+      {
+        "label": "React - Coming Soon",
+        "value": "react",
+        "disabled": true
+      },
+      {
+        "label": "Vue - Coming Soon",
+        "value": "vue",
+        "disabled": true
       }
     ]
   },
@@ -19,6 +29,16 @@
         "label": "AuthJS",
         "value": "authjs",
         "selected": true
+      },
+      {
+        "label": "Auth0 - Coming Soon",
+        "value": "auth0",
+        "disabled": true
+      },
+      {
+        "label": "Firebase - Coming Soon",
+        "value": "firebase",
+        "disabled": true
       }
     ]
   },
@@ -32,6 +52,11 @@
         "label": "Telefunc",
         "value": "telefunc",
         "selected": true
+      },
+      {
+        "label": "tRPC - Coming Soon",
+        "value": "trpc",
+        "disabled": true
       }
     ]
   },
@@ -62,6 +87,101 @@
         "label": "TailwindCSS",
         "value": "tailwindcss",
         "selected": true
+      },
+      {
+        "label": "UnoCSS - Coming Soon",
+        "value": "unocss",
+        "disabled": true
+      },
+      {
+        "label": "MUI - Coming Soon",
+        "value": "mui",
+        "disabled": true
+      }
+    ]
+  },
+  "database": {
+    "disabled": true,
+    "label": "Database",
+    "features": [
+      {
+        "label": "Coming Soon",
+        "selected": true
+      },
+      {
+        "label": "Prisma - Coming Soon",
+        "value": "prisma",
+        "disabled": true
+      },
+      {
+        "label": "EdgeDB - Coming Soon",
+        "value": "edgedb",
+        "disabled": true
+      }
+    ]
+  },
+  "hosting": {
+    "disabled": true,
+    "label": "Hosting",
+    "features": [
+      {
+        "label": "Coming Soon",
+        "selected": true
+      },
+      {
+        "label": "Vercel - Coming Soon",
+        "value": "vercel",
+        "disabled": true
+      },
+      {
+        "label": "Netlify - Coming Soon",
+        "value": "netlify",
+        "disabled": true
+      }
+    ]
+  },
+  "analytics": {
+    "disabled": true,
+    "label": "Analytics",
+    "features": [
+      {
+        "label": "Coming Soon",
+        "selected": true
+      },
+      {
+        "label": "Plausible.io - Coming Soon",
+        "value": "plausible-io",
+        "disabled": true
+      },
+      {
+        "label": "Google Analytics - Coming Soon",
+        "value": "google-analytics",
+        "disabled": true
+      },
+      {
+        "label": "Segment - Coming Soon",
+        "value": "segment",
+        "disabled": true
+      }
+    ]
+  },
+  "error": {
+    "disabled": true,
+    "label": "Error tracking",
+    "features": [
+      {
+        "label": "Coming Soon",
+        "selected": true
+      },
+      {
+        "label": "Sentry - Coming Soon",
+        "value": "sentry",
+        "disabled": true
+      },
+      {
+        "label": "Logrocket - Coming Soon",
+        "value": "logrocket",
+        "disabled": true
       }
     ]
   }
