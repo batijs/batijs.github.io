@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "hattip serve ./hattip-entry.ts --client",
-    "build": "hattip build ./hattip-entry.ts --client"
+    "build": "vite build"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +25,7 @@
     "cross-fetch": "^3.1.5",
     "hattip": "^0.0.33",
     "solid-js": "^1.7.5",
-    "vike-solid": "^0.0.6",
+    "vike-solid": "^0.0.7",
     "vite": "^4.3.5",
     "vite-plugin-ssr": "^0.4.123"
   }

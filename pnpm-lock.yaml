@@ -12,7 +12,7 @@ specifiers:
   solid-js: ^1.7.5
   tailwindcss: ^3.3.2
   typescript: ^5.0.4
-  vike-solid: ^0.0.6
+  vike-solid: ^0.0.7
   vite: ^4.3.5
   vite-plugin-ssr: ^0.4.123
   vite-tsconfig-paths: ^4.2.0
@@ -22,7 +22,7 @@ dependencies:
   cross-fetch: 3.1.5
   hattip: 0.0.33
   solid-js: 1.7.5
-  vike-solid: 0.0.6_solid-js@1.7.5
+  vike-solid: 0.0.7_solid-js@1.7.5
   vite: 4.3.5
   vite-plugin-ssr: 0.4.123_vite@4.3.5
 
@@ -1625,8 +1625,8 @@ packages:
     resolution: {integrity: sha512-hGdgQozCsQJMyfK5urgFcWEqsSSrK63Awe0t/IMR0bZ0QMtnuaiHzThW81guu3qx9abLi99NEuiaN6P9gVYsNg==}
     dev: false
 
-  /vike-solid/0.0.6_solid-js@1.7.5:
-    resolution: {integrity: sha512-59/IXLbVSIZOFCsT/0S/I8edFGFAMpThJzRANkNVyHrjGZcjWZmXgOPj/txPsXxyCC8AsCnR3ZhSxXi80B+i1Q==}
+  /vike-solid/0.0.7_solid-js@1.7.5:
+    resolution: {integrity: sha512-karhoiiHb+AXhCrrAyZQMbbzBS8E9eP/bbtim/ERsK5/bOoCAVDqIWsG2FDC+7ZOf3aXSvlUsMUGBQBhCT3pcA==}
     hasBin: true
     peerDependencies:
       solid-js: ^1.7.1
