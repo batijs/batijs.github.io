@@ -7,7 +7,7 @@
     "vike-solid/renderer/+config.js": "node_modules/.pnpm/vike-solid@0.0.7_solid-js@1.7.5/node_modules/vike-solid/dist/_config.js",
     "vike-solid/renderer/+passToClient.js": "node_modules/.pnpm/vike-solid@0.0.7_solid-js@1.7.5/node_modules/vike-solid/dist/_passToClient.js"
   },
-  "baseServer": "/",
-  "baseAssets": "/",
+  "baseServer": "/batijs.github.io/",
+  "baseAssets": "/batijs.github.io/",
   "includeAssetsImportedByServer": false
 }
