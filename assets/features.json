@@ -101,7 +101,6 @@
     ]
   },
   "db": {
-    "disabled": true,
     "label": "Database",
     "features": [
       {
