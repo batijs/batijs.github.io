@@ -100,18 +100,17 @@
       }
     ]
   },
-  "database": {
+  "db": {
     "disabled": true,
     "label": "Database",
     "features": [
       {
-        "label": "Coming Soon",
+        "label": "none",
         "selected": true
       },
       {
-        "label": "Prisma - Coming Soon",
-        "value": "prisma",
-        "disabled": true
+        "label": "Prisma",
+        "value": "prisma"
       },
       {
         "label": "EdgeDB - Coming Soon",
