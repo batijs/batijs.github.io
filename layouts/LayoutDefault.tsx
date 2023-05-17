@@ -1,15 +1,20 @@
-import "./tailwind.css";
+import css from "./tailwind.css";
 import logoUrl from "../assets/logo.svg";
 import type { JSX } from "solid-js";
 
 export default function LayoutDefault(props: { children?: JSX.Element }) {
   return (
-    <div class="flex flex-col mx-auto">
-      <header class="w-full flex justify-center py-4 bg-warning">
-        <span class="text-4xl text-warning-content">⚠ Under construction</span>
-      </header>
-      <Content>{props.children}</Content>
-    </div>
+    <>
+      {process.env.NODE_ENV === "production" ? <style>{css}</style> : ""}
+      <div class="flex flex-col mx-auto">
+        <header class="w-full flex justify-center py-4 bg-warning">
+          <span class="text-4xl text-warning-content">
+            ⚠ Under construction
+          </span>
+        </header>
+        <Content>{props.children}</Content>
+      </div>
+    </>
   );
 }
 
