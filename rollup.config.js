@@ -16,7 +16,7 @@ export default {
   input: "pages/index/Index.element.ts",
   output: [
     {
-      file: "dist/solid/element.js",
+      file: "dist/elements/full.js",
       format: "es",
     },
   ],

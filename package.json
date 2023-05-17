@@ -1,16 +1,20 @@
 {
-  "name": "my-app",
-  "version": "0.0.14",
-  "description": "",
+  "name": "@batijs/elements",
+  "version": "0.0.1",
+  "description": "BatiJS website as Web Components",
   "type": "module",
   "scripts": {
     "dev": "hattip serve ./hattip-entry.ts --client",
     "build": "vite build",
+    "release": "pnpm run build:element && pnpm release",
     "build:element": "rollup -c",
     "build:pages": "vite build --mode pages"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "bati",
+    "batijs"
+  ],
+  "author": "Joël Charles",
   "devDependencies": {
     "@babel/core": "^7.21.8",
     "@hattip/adapter-node": "^0.0.33",
@@ -42,5 +46,8 @@
     "vite": "^4.3.5",
     "vite-plugin-ssr": "^0.4.123",
     "vite-tsconfig-paths": "^4.2.0"
-  }
+  },
+  "files": [
+    "dist/elements"
+  ]
 }
