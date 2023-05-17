@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "hattip serve ./hattip-entry.ts --client",
     "build": "vite build",
-    "release": "pnpm run build:element && pnpm release",
+    "release": "pnpm run build:element && pnpm publish",
     "build:element": "rollup -c",
     "build:pages": "vite build --mode pages"
   },
