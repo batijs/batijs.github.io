@@ -13,7 +13,7 @@ export function Select(
           <option
             disabled={option.disabled}
             selected={option.selected}
-            value={option.value}
+            value={option.value ?? ""}
           >
             {option.label}
           </option>

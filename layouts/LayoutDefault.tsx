@@ -1,4 +1,5 @@
-import css from "./tailwind.css";
+import "./tailwind.css";
+import css from "./tailwind.css?inline";
 import logoUrl from "../assets/logo.svg";
 import type { JSX } from "solid-js";
 
