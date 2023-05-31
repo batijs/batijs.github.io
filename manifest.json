@@ -13,14 +13,14 @@
     "file": "assets/static/logo.059a8ea3.svg",
     "src": "assets/logo.svg"
   },
-  "node_modules/.pnpm/vite-plugin-ssr@0.4.123_vite@4.3.5/node_modules/vite-plugin-ssr/dist/esm/client/router/entry.js": {
+  "node_modules/.pnpm/vite-plugin-ssr@0.4.131_vite@4.3.9/node_modules/vite-plugin-ssr/dist/esm/client/router/entry.js": {
     "dynamicImports": [
       "virtual:vite-plugin-ssr:importPageCode:client:/pages/_error",
       "virtual:vite-plugin-ssr:importPageCode:client:/pages/index"
     ],
-    "file": "assets/entries/entry-client-routing.d818bc15.js",
+    "file": "assets/entries/entry-client-routing.b02a8f0d.js",
     "isEntry": true,
-    "src": "node_modules/.pnpm/vite-plugin-ssr@0.4.123_vite@4.3.5/node_modules/vite-plugin-ssr/dist/esm/client/router/entry.js"
+    "src": "node_modules/.pnpm/vite-plugin-ssr@0.4.131_vite@4.3.9/node_modules/vite-plugin-ssr/dist/esm/client/router/entry.js"
   },
   "virtual:vite-plugin-ssr:importPageCode:client:/pages/_error": {
     "file": "assets/entries/pages_error.3f63d162.js",
@@ -35,7 +35,7 @@
     "assets": [
       "assets/static/logo.059a8ea3.svg"
     ],
-    "file": "assets/entries/pages_index.36a735e3.js",
+    "file": "assets/entries/pages_index.f8b3fee9.js",
     "imports": [
       "_chunk-9bc95837.js"
     ],

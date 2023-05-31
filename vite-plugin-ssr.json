@@ -1,5 +1,5 @@
 {
-  "version": "0.4.123",
+  "version": "0.4.131",
   "usesClientRouter": false,
   "manifestKeyMap": {
     "vike-solid/renderer/+onRenderHtml.js": "node_modules/.pnpm/vike-solid@0.0.7_solid-js@1.7.5/node_modules/vike-solid/dist/_onRenderHtml.js",
