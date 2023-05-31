@@ -3,7 +3,7 @@
     "label": "Framework",
     "features": [
       {
-        "label": "SolidJS",
+        "label": "SolidJS ★",
         "value": "solid",
         "selected": true
       },
@@ -26,7 +26,7 @@
         "label": "none"
       },
       {
-        "label": "AuthJS",
+        "label": "AuthJS ★",
         "value": "authjs",
         "selected": true
       },
@@ -49,7 +49,7 @@
         "label": "none"
       },
       {
-        "label": "Telefunc",
+        "label": "Telefunc ★",
         "value": "telefunc",
         "selected": true
       },
@@ -67,7 +67,7 @@
         "label": "none"
       },
       {
-        "label": "Hattip",
+        "label": "Hattip ★",
         "value": "hattip",
         "selected": true
       },

@@ -7,23 +7,8 @@ export default function LayoutDefault(props: { children?: JSX.Element }) {
   return (
     <>
       {process.env.NODE_ENV === "production" ? <style>{css}</style> : ""}
-      <div class="flex flex-col mx-auto">
-        <header class="w-full flex justify-center py-4 bg-warning">
-          <span class="text-4xl text-warning-content">
-            ⚠ Under construction
-          </span>
-        </header>
-        <Content>{props.children}</Content>
-      </div>
+      <div class="flex flex-col mx-auto">{props.children}</div>
     </>
-  );
-}
-
-function Content(props: { children: JSX.Element }) {
-  return (
-    <div class="container max-w-6xl mx-auto mt-6 min-h-screen">
-      {props.children}
-    </div>
   );
 }
 

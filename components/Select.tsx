@@ -5,9 +5,9 @@ export function Select(
     options: JSX.OptionHTMLAttributes<HTMLOptionElement>[];
   }
 ) {
-  const [local, others] = splitProps(props, ["options"]);
+  const [local, others] = splitProps(props, ["options", "class"]);
   return (
-    <select class="select w-full max-w-xs" {...others}>
+    <select class={"select max-w-xs " + local.class} {...others}>
       <For each={local.options}>
         {(option) => (
           <option
