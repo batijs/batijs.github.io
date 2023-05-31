@@ -3,6 +3,7 @@ import type { Definition } from "./types";
 import { FormControl } from "components/FormControl";
 import { Select } from "components/Select";
 import { createStore, produce } from "solid-js/store";
+import { startViewTransition } from "components/Flip";
 
 export default function DrawerContent(props: {
   features: Record<string, Definition>;
@@ -39,12 +40,14 @@ export default function DrawerContent(props: {
                 class="btn btn-primary"
                 disabled={fs.disabled}
                 onClick={() => {
-                  props.onAdd(ns, JSON.parse(JSON.stringify(fs)));
-                  setCurrentFeatures(
-                    produce((s) => {
-                      delete s[ns];
-                    })
-                  );
+                  startViewTransition(fs.label, () => {
+                    props.onAdd(ns, JSON.parse(JSON.stringify(fs)));
+                    setCurrentFeatures(
+                      produce((s) => {
+                        delete s[ns];
+                      })
+                    );
+                  });
                 }}
               >
                 +

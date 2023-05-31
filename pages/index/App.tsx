@@ -59,15 +59,15 @@ export default function App() {
         <div class="w-full items-center flex justify-center mt-8">
           <div class="w-4/5 flex flex-col bg-base-300 px-4 py-8 rounded-xl shadow-2xl">
             <div class="grid place-items-center grid-cols-2 gap-4">
-              <For each={Object.entries(currentFeatures)}>
-                {([ns, fs]) => (
-                  <FormControl label={fs.label}>
+              <For each={Object.keys(currentFeatures)}>
+                {(ns) => (
+                  <FormControl label={currentFeatures[ns].label}>
                     <Select
-                      disabled={fs.disabled}
+                      disabled={currentFeatures[ns].disabled}
                       onChange={(e) =>
                         setState(ns, e.target.value || undefined)
                       }
-                      options={fs.features}
+                      options={currentFeatures[ns].features}
                     />
                   </FormControl>
                 )}
