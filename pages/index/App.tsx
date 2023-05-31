@@ -1,15 +1,16 @@
-import { Logo } from "components/Logo";
-import { Select } from "components/Select";
-import { FormControl } from "components/FormControl";
+import {Logo} from "components/Logo";
+import {Select} from "components/Select";
+import {FormControl} from "components/FormControl";
 import features from "assets/features.json";
-import { createMemo, For } from "solid-js";
-import { createStore } from "solid-js/store";
+import {createMemo, For} from "solid-js";
+import {createStore} from "solid-js/store";
 import Drawer from "./Drawer";
 import DrawerContent from "./DrawerContent";
-import type { Definition } from "./types";
+import type {Definition} from "./types";
+import Bric from "components/Bric";
 
 export default function App() {
-  const { framework, ...otherFeatures } = features;
+  const {framework, ...otherFeatures} = features;
   const [currentFeatures, setCurrentFeatures] = createStore<
     Record<string, Definition>
   >({
@@ -52,7 +53,7 @@ export default function App() {
       <div class="container mt-8">
         <div class="w-full items-center flex justify-center gap-8">
           <a class="inline-block" href="/">
-            <Logo size={96} />
+            <Logo size={96}/>
           </a>
           <h1 class="font-sans font-bold text-8xl pb-4">Bâti</h1>
         </div>
@@ -75,7 +76,11 @@ export default function App() {
             </div>
             <div class="divider"></div>
             <div class="px-4">
-              <kbd class="kbd kbd-lg select-all">{words().join(" ")}</kbd>
+              <kbd class="inline-flex flex-wrap gap-1.5 bg-[#cd4e41] p-1.5 rounded-sm">
+                <For each={words()}>
+                  {(word) => (<Bric word={word} />)}
+                </For>
+              </kbd>
             </div>
           </div>
         </div>
