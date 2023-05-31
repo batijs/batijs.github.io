@@ -139,17 +139,15 @@
     ]
   },
   "analytics": {
-    "disabled": true,
     "label": "Analytics",
     "features": [
       {
-        "label": "Coming Soon",
+        "label": "none",
         "selected": true
       },
       {
-        "label": "Plausible.io - Coming Soon",
-        "value": "plausible-io",
-        "disabled": true
+        "label": "Plausible.io",
+        "value": "plausible.io"
       },
       {
         "label": "Google Analytics - Coming Soon",
