@@ -3,9 +3,16 @@ import { type JSX } from "solid-js";
 // @ts-ignore
 import { flip } from "./Flip";
 
-export function FormControl(props: { children: JSX.Element; label: string }) {
+export function FormControl(props: {
+  children: JSX.Element;
+  label: string;
+  class?: string;
+}) {
   return (
-    <div class="form-control w-full max-w-xs" use:flip={props.label}>
+    <div
+      class={"form-control w-full max-w-xs " + (props.class ?? "")}
+      use:flip={props.label}
+    >
       <label class="label">
         <span class="label-text">{props.label}</span>
       </label>

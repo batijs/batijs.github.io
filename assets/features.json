@@ -23,9 +23,6 @@
     "label": "Auth",
     "features": [
       {
-        "label": "none"
-      },
-      {
         "label": "AuthJS ★",
         "value": "authjs",
         "selected": true
@@ -46,9 +43,6 @@
     "label": "RPC",
     "features": [
       {
-        "label": "none"
-      },
-      {
         "label": "Telefunc ★",
         "value": "telefunc",
         "selected": true
@@ -64,9 +58,6 @@
     "label": "Server",
     "features": [
       {
-        "label": "none"
-      },
-      {
         "label": "Hattip ★",
         "value": "hattip",
         "selected": true
@@ -80,9 +71,6 @@
   "uikit": {
     "label": "UI",
     "features": [
-      {
-        "label": "none"
-      },
       {
         "label": "TailwindCSS",
         "value": "tailwindcss",
@@ -104,12 +92,9 @@
     "label": "Database",
     "features": [
       {
-        "label": "none",
-        "selected": true
-      },
-      {
         "label": "Prisma",
-        "value": "prisma"
+        "value": "prisma",
+        "selected": true
       },
       {
         "label": "EdgeDB - Coming Soon",
@@ -142,12 +127,9 @@
     "label": "Analytics",
     "features": [
       {
-        "label": "none",
-        "selected": true
-      },
-      {
         "label": "Plausible.io",
-        "value": "plausible.io"
+        "value": "plausible.io",
+        "selected": true
       },
       {
         "label": "Google Analytics - Coming Soon",

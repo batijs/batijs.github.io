@@ -7,7 +7,7 @@ export function Select(
 ) {
   const [local, others] = splitProps(props, ["options", "class"]);
   return (
-    <select class={"select max-w-xs " + local.class} {...others}>
+    <select class={"select max-w-xs " + (local.class ?? "")} {...others}>
       <For each={local.options}>
         {(option) => (
           <option
