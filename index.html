@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <html lang='en'>
       <head>
-        <link rel="stylesheet" type="text/css" href="/batijs.github.io/assets/static/LayoutDefault.6360b061.css">
+        <link rel="stylesheet" type="text/css" href="/batijs.github.io/assets/static/LayoutDefault.c7043b8f.css">
         <meta charset="UTF-8" />
         <title>Bâti</title>
         <meta name="description" content="Bâti" />
@@ -9,7 +9,7 @@
         <script>(e=>{let t=e=>e&&e.hasAttribute&&(e.hasAttribute("data-hk")?e:t(e.host&&e.host.nodeType?e.host:e.parentNode));["click", "input"].forEach((o=>document.addEventListener(o,(o=>{let s=o.composedPath&&o.composedPath()[0]||o.target,a=t(s);a&&!e.completed.has(a)&&e.events.push([a,o])}))))})(window._$HY||(_$HY={events:[],completed:new WeakSet,r:{},fe(){},init(e,t){_$HY.r[e]=[new Promise((e=>t=e)),t]},set(e,t,o){(o=_$HY.r[e])&&o[1](t),_$HY.r[e]=[t]},unset(e){delete _$HY.r[e]},load:e=>_$HY.r[e]}));</script><!--xs-->
       </head>
       <body>
-        <div id="page-view"><style data-hk="0-0-0-0-0-0-0">/*
+        <div id="page-view"><style data-hk="0-0-0-0-0-0-0-0-0">/*
 ! tailwindcss v3.3.2 | MIT License | https://tailwindcss.com
 *//*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -1713,6 +1713,71 @@ html {
     max-width: 1536px;
   }
 }
+.btn {
+  display: inline-flex;
+  flex-shrink: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border-color: transparent;
+  border-color: hsl(var(--n) / var(--tw-border-opacity));
+  text-align: center;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--rounded-btn, 0.5rem);
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  line-height: 1em;
+  min-height: 3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-transform: var(--btn-text-case, uppercase);
+  text-decoration-line: none;
+  border-width: var(--border-btn, 1px);
+  animation: button-pop var(--animation-btn, 0.25s) ease-out;
+  --tw-border-opacity: 1;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--n) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--nc) / var(--tw-text-opacity));
+}
+.btn-disabled,
+  .btn[disabled] {
+  pointer-events: none;
+}
+.btn.loading,
+    .btn.loading:hover {
+  pointer-events: none;
+}
+.btn.loading:before {
+  margin-right: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 9999px;
+  border-width: 2px;
+  animation: spin 2s linear infinite;
+  content: "";
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: currentColor;
+  border-right-color: currentColor;
+}
+@media (prefers-reduced-motion: reduce) {
+
+  .btn.loading:before {
+    animation: spin 10s linear infinite;
+  }
+}
 @keyframes spin {
 
   from {
@@ -1722,6 +1787,29 @@ html {
   to {
     transform: rotate(360deg);
   }
+}
+.btn-group > input[type="radio"].btn {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.btn-group > input[type="radio"].btn:before {
+  content: attr(data-title);
+}
+.checkbox {
+  flex-shrink: 0;
+  --chkbg: var(--bc);
+  --chkfg: var(--b1);
+  height: 1.5rem;
+  width: 1.5rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-width: 1px;
+  border-color: hsl(var(--bc) / var(--tw-border-opacity));
+  --tw-border-opacity: 0.2;
+  border-radius: var(--rounded-btn, 0.5rem);
 }
 .divider {
   display: flex;
@@ -1740,6 +1828,174 @@ html {
   height: 0.125rem;
   width: 100%;
 }
+.drawer {
+  display: grid;
+  width: 100%;
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+}
+.drawer.drawer-end {
+  direction: rtl;
+}
+.drawer.drawer-end > * {
+  direction: ltr;
+}
+.drawer.drawer-end > .drawer-toggle ~ .drawer-side > .drawer-overlay + * {
+  --tw-translate-x: 100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  justify-self: end;
+}
+.drawer.drawer-end > .drawer-toggle:checked ~ .drawer-side > .drawer-overlay + * {
+  --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+:where(.drawer-toggle ~ .drawer-content) {
+  height: inherit;
+}
+.drawer-toggle {
+  position: absolute;
+  height: 0px;
+  width: 0px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  opacity: 0;
+}
+.drawer-toggle ~ .drawer-content {
+  z-index: 0;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  overflow-y: auto;
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.drawer-toggle ~ .drawer-side {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  display: grid;
+  max-height: 100vh;
+  overflow-x: hidden;
+}
+.drawer-toggle ~ .drawer-side > .drawer-overlay {
+  visibility: hidden;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  opacity: 0;
+  cursor: pointer;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--nf, var(--n)) / var(--tw-bg-opacity));
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.drawer-toggle ~ .drawer-side > .drawer-overlay + * {
+  z-index: 10;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  --tw-translate-x: -100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.drawer-toggle:checked ~ .drawer-side {
+  isolation: isolate;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
+  visibility: visible;
+  opacity: 0.999999;
+  --tw-bg-opacity: 0.4;
+}
+.drawer-toggle:checked ~ .drawer-side > .drawer-overlay + * {
+  --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+[dir="rtl"] .drawer-toggle ~ .drawer-side > .drawer-overlay + * {
+  --tw-translate-x: 100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+[dir="rtl"] .drawer-toggle:checked ~ .drawer-side > .drawer-overlay + * {
+  --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+[dir="rtl"] .drawer.drawer-end > .drawer-toggle ~ .drawer-side > .drawer-overlay + * {
+  --tw-translate-x: -100%;
+}
+[dir="rtl"] .drawer.drawer-end > .drawer-toggle:checked ~ .drawer-side > .drawer-overlay + * {
+  --tw-translate-x: 0px;
+}
+[dir="rtl"] .drawer.drawer-end > .drawer-toggle:checked ~ .drawer-content {
+  --tw-translate-x: 0.5rem;
+}
+@media (min-width: 1024px) {
+
+  .drawer-mobile {
+    grid-auto-columns: max-content auto;
+  }
+
+  .drawer-mobile > .drawer-toggle ~ .drawer-content {
+    height: auto;
+  }
+
+  @media (min-width: 1024px) {
+
+    .drawer-mobile > .drawer-toggle ~ .drawer-content {
+      grid-column-start: 2;
+    }
+
+    .drawer-mobile > .drawer-toggle ~ .drawer-side > .drawer-overlay {
+      visibility: visible;
+    }
+
+    .drawer-mobile > .drawer-toggle ~ .drawer-side > .drawer-overlay + * {
+      --tw-translate-x: 0px;
+      transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    }
+
+    .drawer-mobile.drawer-end > .drawer-toggle ~ .drawer-content {
+      grid-column-start: 1;
+    }
+
+    .drawer-mobile.drawer-end > .drawer-toggle ~ .drawer-side {
+      grid-column-start: 2;
+    }
+
+    .drawer-mobile.drawer-end > .drawer-toggle ~ .drawer-side > .drawer-overlay {
+      visibility: visible;
+    }
+
+    .drawer-mobile.drawer-end > .drawer-toggle ~ .drawer-side > .drawer-overlay + * {
+      --tw-translate-x: 0px;
+      transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    }
+  }
+
+  .drawer-mobile > .drawer-toggle ~ .drawer-side {
+    overflow-y: auto;
+  }
+
+  .drawer-mobile.drawer-end {
+    grid-auto-columns: auto max-content;
+    direction: ltr;
+  }
+
+  .drawer-mobile.drawer-end > .drawer-toggle ~ .drawer-content {
+    height: auto;
+  }
+
+  .drawer-mobile.drawer-end > .drawer-toggle ~ .drawer-side {
+    overflow-y: auto;
+  }
+
+  .drawer-mobile > .drawer-toggle:checked ~ .drawer-content {
+    --tw-translate-x: 0px;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+}
 .form-control {
   display: flex;
   flex-direction: column;
@@ -1756,11 +2012,54 @@ html {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+.input {
+  flex-shrink: 1;
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+  line-height: 2;
+  line-height: 1.5rem;
+  border-width: 1px;
+  border-color: hsl(var(--bc) / var(--tw-border-opacity));
+  --tw-border-opacity: 0;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+  border-radius: var(--rounded-btn, 0.5rem);
+}
+.input-group {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+.input-group > .input {
+  isolation: isolate;
+}
 .input-group > *,
   .input-group > .input,
   .input-group > .textarea,
   .input-group > .select {
   border-radius: 0px;
+}
+.input-group :where(span) {
+  display: flex;
+  align-items: center;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b3, var(--b2)) / var(--tw-bg-opacity));
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.input-group > :first-child {
+  border-top-left-radius: var(--rounded-btn, 0.5rem);
+  border-top-right-radius: 0;
+  border-bottom-left-radius: var(--rounded-btn, 0.5rem);
+  border-bottom-right-radius: 0;
+}
+.input-group > :last-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: var(--rounded-btn, 0.5rem);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: var(--rounded-btn, 0.5rem);
 }
 .kbd {
   display: inline-flex;
@@ -1778,8 +2077,69 @@ html {
   min-height: 2.2em;
   min-width: 2.2em;
 }
+.link {
+  cursor: pointer;
+  text-decoration-line: underline;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.menu.horizontal {
+  display: inline-flex;
+  flex-direction: row;
+}
+.menu.horizontal :where(li) {
+  flex-direction: row;
+}
+:where(.menu li) {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.menu :where(li:not(.menu-title)) > :where(*:not(ul)) {
+  display: flex;
+}
+.menu :where(li:not(.disabled):not(.menu-title)) > :where(*:not(ul)) {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  align-items: center;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.menu > :where(li > *:not(ul):focus) {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
 .menu > :where(li.disabled > *:not(ul):focus) {
   cursor: auto;
+}
+.menu > :where(li) :where(ul) {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.menu > :where(li) > :where(ul) {
+  position: absolute;
+  display: none;
+  top: initial;
+  left: 100%;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.menu > :where(li:hover) > :where(ul) {
+  display: flex;
+}
+.menu > :where(li:focus) > :where(ul) {
+  display: flex;
 }
 .select {
   display: inline-flex;
@@ -1813,6 +2173,80 @@ html {
 .select[multiple] {
   height: auto;
 }
+.tooltip {
+  position: relative;
+  display: inline-block;
+  --tooltip-offset: calc(100% + 1px + var(--tooltip-tail, 0px));
+  text-align: center;
+  --tooltip-tail: 3px;
+  --tooltip-color: hsl(var(--n));
+  --tooltip-text-color: hsl(var(--nc));
+  --tooltip-tail-offset: calc(100% + 1px - var(--tooltip-tail));
+}
+.tooltip:before {
+  position: absolute;
+  pointer-events: none;
+  z-index: 999;
+  content: var(--tw-content);
+  --tw-content: attr(data-tip);
+  max-width: 20rem;
+  border-radius: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  background-color: var(--tooltip-color);
+  color: var(--tooltip-text-color);
+  width: -moz-max-content;
+  width: max-content;
+}
+.tooltip:before, .tooltip-top:before {
+  transform: translateX(-50%);
+  top: auto;
+  left: 50%;
+  right: auto;
+  bottom: var(--tooltip-offset);
+}
+.tooltip-bottom:before {
+  transform: translateX(-50%);
+  top: var(--tooltip-offset);
+  left: 50%;
+  right: auto;
+  bottom: auto;
+}
+.btn-outline.btn-primary .badge {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--p) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+.btn-outline.btn-primary .badge-outline {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+  background-color: transparent;
+  --tw-text-opacity: 1;
+  color: hsl(var(--p) / var(--tw-text-opacity));
+}
+.btn-outline.btn-primary:hover .badge {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--pc) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--pc) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--p) / var(--tw-text-opacity));
+}
+.btn-outline.btn-primary:hover .badge.outline {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--pc) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--pf, var(--p)) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--pc) / var(--tw-text-opacity));
+}
 .btm-nav>*.disabled,
     .btm-nav>*.disabled:hover,
     .btm-nav>*[disabled],
@@ -1828,6 +2262,100 @@ html {
   font-size: 1rem;
   line-height: 1.5rem;
 }
+.btn:active:hover,
+  .btn:active:focus {
+  animation: none;
+}
+.btn:not(.no-animation):active:hover,
+  .btn:not(.no-animation):active:focus {
+  transform: scale(var(--btn-focus-scale, 0.95));
+}
+.btn:hover,
+    .btn-active {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--nf, var(--n)) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--nf, var(--n)) / var(--tw-bg-opacity));
+}
+.btn:focus-visible {
+  outline: 2px solid hsl(var(--nf));
+  outline-offset: 2px;
+}
+.btn-primary {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--p) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+.btn-primary:hover,
+    .btn-primary.btn-active {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--pf, var(--p)) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--pf, var(--p)) / var(--tw-bg-opacity));
+}
+.btn-primary:focus-visible {
+  outline: 2px solid hsl(var(--p));
+}
+.btn.glass:hover,
+    .btn.glass.btn-active {
+  --glass-opacity: 25%;
+  --glass-border-opacity: 15%;
+}
+.btn.glass:focus-visible {
+  outline: 2px solid currentColor;
+}
+.btn-outline.btn-primary {
+  --tw-text-opacity: 1;
+  color: hsl(var(--p) / var(--tw-text-opacity));
+}
+.btn-outline.btn-primary:hover,
+      .btn-outline.btn-primary.btn-active {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--pf, var(--p)) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--pf, var(--p)) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+.btn-disabled,
+  .btn-disabled:hover,
+  .btn[disabled],
+  .btn[disabled]:hover {
+  --tw-border-opacity: 0;
+  background-color: hsl(var(--n) / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.2;
+  color: hsl(var(--bc) / var(--tw-text-opacity));
+  --tw-text-opacity: 0.2;
+}
+.btn.loading.btn-square:before,
+    .btn.loading.btn-circle:before {
+  margin-right: 0px;
+}
+.btn.loading.btn-xl:before,
+    .btn.loading.btn-lg:before {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+.btn.loading.btn-sm:before,
+    .btn.loading.btn-xs:before {
+  height: 0.75rem;
+  width: 0.75rem;
+}
+.btn-group > input[type="radio"]:checked.btn,
+  .btn-group > .btn-active {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--p) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+.btn-group > input[type="radio"]:checked.btn:focus-visible, .btn-group > .btn-active:focus-visible {
+  outline: 2px solid hsl(var(--p));
+}
 @keyframes button-pop {
 
   0% {
@@ -1841,6 +2369,33 @@ html {
   100% {
     transform: scale(1);
   }
+}
+.checkbox:focus-visible {
+  outline: 2px solid hsl(var(--bc));
+  outline-offset: 2px;
+}
+.checkbox:checked,
+  .checkbox[checked="true"],
+  .checkbox[aria-checked="true"] {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--bc) / var(--tw-bg-opacity));
+  background-repeat: no-repeat;
+  animation: checkmark var(--animation-input, 0.2s) ease-in-out;
+  background-image: linear-gradient(-45deg, transparent 65%, hsl(var(--chkbg)) 65.99%), linear-gradient(45deg, transparent 75%, hsl(var(--chkbg)) 75.99%), linear-gradient(-45deg, hsl(var(--chkbg)) 40%, transparent 40.99%), linear-gradient(45deg, hsl(var(--chkbg)) 30%, hsl(var(--chkfg)) 30.99%, hsl(var(--chkfg)) 40%, transparent 40.99%), linear-gradient(-45deg, hsl(var(--chkfg)) 50%, hsl(var(--chkbg)) 50.99%);
+}
+.checkbox:indeterminate {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--bc) / var(--tw-bg-opacity));
+  background-repeat: no-repeat;
+  animation: checkmark var(--animation-input, 0.2s) ease-in-out;
+  background-image: linear-gradient(90deg, transparent 80%, hsl(var(--chkbg)) 80%), linear-gradient(-90deg, transparent 80%, hsl(var(--chkbg)) 80%), linear-gradient(0deg, hsl(var(--chkbg)) 43%, hsl(var(--chkfg)) 43%, hsl(var(--chkfg)) 57%, hsl(var(--chkbg)) 57%);
+}
+.checkbox:disabled {
+  cursor: not-allowed;
+  border-color: transparent;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--bc) / var(--tw-bg-opacity));
+  opacity: 0.2;
 }
 @keyframes checkmark {
 
@@ -1856,6 +2411,11 @@ html {
     background-position-y: 0;
   }
 }
+[dir="rtl"] .checkbox:checked,
+    [dir="rtl"] .checkbox[checked="true"],
+    [dir="rtl"] .checkbox[aria-checked="true"] {
+  background-image: linear-gradient(45deg, transparent 65%, hsl(var(--chkbg)) 65.99%), linear-gradient(-45deg, transparent 75%, hsl(var(--chkbg)) 75.99%), linear-gradient(45deg, hsl(var(--chkbg)) 40%, transparent 40.99%), linear-gradient(-45deg, hsl(var(--chkbg)) 30%, hsl(var(--chkfg)) 30.99%, hsl(var(--chkfg)) 40%, transparent 40.99%), linear-gradient(45deg, hsl(var(--chkfg)) 50%, hsl(var(--chkbg)) 50.99%);
+}
 .divider:before {
   background-color: hsl(var(--bc) / var(--tw-bg-opacity));
   --tw-bg-opacity: 0.1;
@@ -1867,6 +2427,48 @@ html {
 .divider:not(:empty) {
   gap: 1rem;
 }
+.drawer.drawer-end > .drawer-toggle:checked ~ .drawer-content {
+  --tw-translate-x: -0.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.drawer-toggle:checked ~ .drawer-content {
+  --tw-translate-x: 0.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.drawer-toggle:focus-visible ~ .drawer-content .drawer-button {
+  outline: 2px solid hsl(var(--nf));
+  outline-offset: 2px;
+}
+.drawer-toggle:focus-visible ~ .drawer-content .drawer-button.btn-primary {
+  outline: 2px solid hsl(var(--p));
+}
+.drawer-toggle:focus-visible ~ .drawer-content .drawer-button.btn-secondary {
+  outline: 2px solid hsl(var(--s));
+}
+.drawer-toggle:focus-visible ~ .drawer-content .drawer-button.btn-accent {
+  outline: 2px solid hsl(var(--a));
+}
+.drawer-toggle:focus-visible ~ .drawer-content .drawer-button.btn-info {
+  outline: 2px solid hsl(var(--in));
+}
+.drawer-toggle:focus-visible ~ .drawer-content .drawer-button.btn-success {
+  outline: 2px solid hsl(var(--su));
+}
+.drawer-toggle:focus-visible ~ .drawer-content .drawer-button.btn-warning {
+  outline: 2px solid hsl(var(--wa));
+}
+.drawer-toggle:focus-visible ~ .drawer-content .drawer-button.btn-error {
+  outline: 2px solid hsl(var(--er));
+}
+.drawer-toggle:focus-visible ~ .drawer-content .drawer-button.glass {
+  outline: 2px solid currentColor;
+}
+.drawer-toggle:focus-visible ~ .drawer-content .drawer-button.btn-ghost {
+  outline: 2px solid currentColor;
+}
+.drawer-toggle:focus-visible ~ .drawer-content .drawer-button.btn-link {
+  outline: 2px solid currentColor;
+}
 .label-text {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -1877,6 +2479,87 @@ html {
   --tw-text-opacity: 1;
   color: hsl(var(--bc) / var(--tw-text-opacity));
 }
+.input[list]::-webkit-calendar-picker-indicator {
+  line-height: 1em;
+}
+.input:focus {
+  outline: 2px solid hsla(var(--bc) / 0.2);
+  outline-offset: 2px;
+}
+.input-disabled,
+  .input[disabled] {
+  cursor: not-allowed;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--b2, var(--b1)) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b2, var(--b1)) / var(--tw-bg-opacity));
+  --tw-text-opacity: 0.2;
+}
+.input-disabled::-moz-placeholder, .input[disabled]::-moz-placeholder {
+  color: hsl(var(--bc) / var(--tw-placeholder-opacity));
+  --tw-placeholder-opacity: 0.2;
+}
+.input-disabled::placeholder,
+  .input[disabled]::placeholder {
+  color: hsl(var(--bc) / var(--tw-placeholder-opacity));
+  --tw-placeholder-opacity: 0.2;
+}
+.link:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+.menu.horizontal > li.bordered > a,
+        .menu.horizontal > li.bordered > button,
+        .menu.horizontal > li.bordered > span {
+  border-left-width: 0px;
+  border-bottom-width: 4px;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+}
+.menu[class*=" px-"]:not(.menu[class*=" px-0"]) li > *,
+  .menu[class^="px-"]:not(.menu[class^="px-0"]) li > *,
+  .menu[class*=" p-"]:not(.menu[class*=" p-0"]) li > *,
+  .menu[class^="p-"]:not(.menu[class^="p-0"]) li > * {
+  border-radius: var(--rounded-btn, 0.5rem);
+}
+.menu :where(li.bordered > *) {
+  border-left-width: 4px;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+}
+.menu :where(li) > :where(*:not(ul)) {
+  gap: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  color: currentColor;
+}
+.menu :where(li:not(.menu-title):not(:empty)) > :where(*:not(ul):focus),
+  .menu :where(li:not(.menu-title):not(:empty)) > :where(*:not(ul):hover) {
+  background-color: hsl(var(--bc) / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.1;
+}
+.menu :where(li:not(.menu-title):not(:empty)) > :where(:not(ul).active),
+  .menu :where(li:not(.menu-title):not(:empty)) > :where(*:not(ul):active) {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--p) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+.menu :where(li:empty) {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  height: 1px;
+  background-color: hsl(var(--bc) / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.1;
+}
 .menu li.disabled > * {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -1886,6 +2569,123 @@ html {
 }
 .menu li.disabled > *:hover {
   background-color: transparent;
+}
+.menu li.hover-bordered a {
+  border-left-width: 4px;
+  border-color: transparent;
+}
+.menu li.hover-bordered a:hover {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+}
+.menu.compact li > a,
+      .menu.compact li > span {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.menu .menu-title {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  opacity: 0.4;
+}
+.menu .menu-title > * {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.menu :where(li:not(.disabled)) > :where(*:not(ul)) {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.menu > :where(li:first-child) {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: unset;
+  border-bottom-left-radius: unset;
+}
+.menu > :where(li:first-child) > :where(:not(ul)) {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: unset;
+  border-bottom-left-radius: unset;
+}
+.menu > :where(li:last-child) {
+  border-top-left-radius: unset;
+  border-top-right-radius: unset;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.menu > :where(li:last-child) > :where(:not(ul)) {
+  border-top-left-radius: unset;
+  border-top-right-radius: unset;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.menu > :where(li:first-child:last-child) {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.menu > :where(li:first-child:last-child) > :where(:not(ul)) {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.menu > :where(li) > :where(ul) :where(li) {
+  width: 100%;
+  white-space: nowrap;
+}
+.menu > :where(li) > :where(ul) :where(li) :where(ul) {
+  padding-left: 1rem;
+}
+.menu > :where(li) > :where(ul) :where(li) > :where(:not(ul)) {
+  width: 100%;
+  white-space: nowrap;
+}
+.menu > :where(li) > :where(ul) > :where(li:first-child) {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: unset;
+  border-bottom-left-radius: unset;
+}
+.menu > :where(li) > :where(ul) > :where(li:first-child) > :where(:not(ul)) {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: unset;
+  border-bottom-left-radius: unset;
+}
+.menu > :where(li) > :where(ul) > :where(li:last-child) {
+  border-top-left-radius: unset;
+  border-top-right-radius: unset;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.menu > :where(li) > :where(ul) > :where(li:last-child) > :where(:not(ul)) {
+  border-top-left-radius: unset;
+  border-top-right-radius: unset;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.menu > :where(li) > :where(ul) > :where(li:first-child:last-child) {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.menu > :where(li) > :where(ul) > :where(li:first-child:last-child) > :where(:not(ul)) {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
 }
 @keyframes progress-loading {
 
@@ -1964,6 +2764,57 @@ html {
     opacity: 1;
   }
 }
+.tooltip:before,
+.tooltip:after {
+  opacity: 0;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-delay: 100ms;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tooltip:after {
+  position: absolute;
+  content: "";
+  border-style: solid;
+  border-width: var(--tooltip-tail, 0);
+  width: 0;
+  height: 0;
+  display: block;
+}
+.tooltip.tooltip-open:before,
+.tooltip.tooltip-open:after,
+.tooltip:hover:before,
+.tooltip:hover:after {
+  opacity: 1;
+  transition-delay: 75ms;
+}
+.tooltip:not([data-tip]):hover:before,
+.tooltip:not([data-tip]):hover:after {
+  visibility: hidden;
+  opacity: 0;
+}
+.tooltip:after, .tooltip-top:after {
+  transform: translateX(-50%);
+  border-color: var(--tooltip-color) transparent transparent transparent;
+  top: auto;
+  left: 50%;
+  right: auto;
+  bottom: var(--tooltip-tail-offset);
+}
+.tooltip-bottom:after {
+  transform: translateX(-50%);
+  border-color: transparent transparent var(--tooltip-color) transparent;
+  top: var(--tooltip-tail-offset);
+  left: 50%;
+  right: auto;
+  bottom: auto;
+}
+.tooltip-primary {
+  --tooltip-color: hsl(var(--p));
+  --tooltip-text-color: hsl(var(--pc));
+}
 .kbd-lg {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1972,15 +2823,69 @@ html {
   min-height: 2.5em;
   min-width: 2.5em;
 }
+.btn-group .btn:not(:first-child):not(:last-child) {
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+.btn-group .btn:first-child:not(:last-child) {
+  margin-top: -0px;
+  margin-left: -1px;
+  border-start-start-radius: var(--rounded-btn, 0.5rem);
+  border-start-end-radius: 0;
+  border-end-start-radius: var(--rounded-btn, 0.5rem);
+  border-end-end-radius: 0;
+}
+.btn-group .btn:last-child:not(:first-child) {
+  border-start-start-radius: 0;
+  border-start-end-radius: var(--rounded-btn, 0.5rem);
+  border-end-start-radius: 0;
+  border-end-end-radius: var(--rounded-btn, 0.5rem);
+}
+.btn-group-horizontal .btn:not(:first-child):not(:last-child) {
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+.btn-group-horizontal .btn:first-child:not(:last-child) {
+  margin-top: -0px;
+  margin-left: -1px;
+  border-start-start-radius: var(--rounded-btn, 0.5rem);
+  border-start-end-radius: 0;
+  border-end-start-radius: var(--rounded-btn, 0.5rem);
+  border-end-end-radius: 0;
+}
+.btn-group-horizontal .btn:last-child:not(:first-child) {
+  border-start-start-radius: 0;
+  border-start-end-radius: var(--rounded-btn, 0.5rem);
+  border-end-start-radius: 0;
+  border-end-end-radius: var(--rounded-btn, 0.5rem);
+}
+.btn-group-vertical .btn:first-child:not(:last-child) {
+  margin-top: -1px;
+  margin-left: -0px;
+  border-start-start-radius: var(--rounded-btn, 0.5rem);
+  border-start-end-radius: var(--rounded-btn, 0.5rem);
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+.btn-group-vertical .btn:last-child:not(:first-child) {
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+  border-end-start-radius: var(--rounded-btn, 0.5rem);
+  border-end-end-radius: var(--rounded-btn, 0.5rem);
+}
+.relative {
+  position: relative;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
 }
 .mb-2 {
   margin-bottom: 0.5rem;
-}
-.mt-6 {
-  margin-top: 1.5rem;
 }
 .mt-8 {
   margin-top: 2rem;
@@ -1994,40 +2899,43 @@ html {
 .flex {
   display: flex;
 }
-.grid {
-  display: grid;
-}
-.min-h-screen {
-  min-height: 100vh;
+.inline-flex {
+  display: inline-flex;
 }
 .w-4\/5 {
   width: 80%;
 }
+.w-80 {
+  width: 20rem;
+}
 .w-full {
   width: 100%;
 }
-.max-w-6xl {
-  max-width: 72rem;
-}
 .max-w-xs {
   max-width: 20rem;
+}
+.grow {
+  flex-grow: 1;
 }
 .select-all {
   -webkit-user-select: all;
      -moz-user-select: all;
           user-select: all;
 }
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.flex-row {
+  flex-direction: row;
 }
 .flex-col {
   flex-direction: column;
 }
-.place-items-center {
-  place-items: center;
+.flex-wrap {
+  flex-wrap: wrap;
 }
 .items-center {
   align-items: center;
+}
+.justify-start {
+  justify-content: flex-start;
 }
 .justify-center {
   justify-content: center;
@@ -2038,16 +2946,35 @@ html {
 .gap-8 {
   gap: 2rem;
 }
+.rounded-sm {
+  border-radius: 0.125rem;
+}
 .rounded-xl {
   border-radius: 0.75rem;
+}
+.border-l-8 {
+  border-left-width: 8px;
+}
+.border-l-\[\#de624e\] {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(222 98 78 / var(--tw-border-opacity));
+}
+.bg-\[\#ec7259\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 114 89 / var(--tw-bg-opacity));
 }
 .bg-base-300 {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--b3, var(--b2)) / var(--tw-bg-opacity));
 }
-.bg-warning {
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--wa) / var(--tw-bg-opacity));
+.p-1 {
+  padding: 0.25rem;
+}
+.p-1\.5 {
+  padding: 0.375rem;
+}
+.p-4 {
+  padding: 1rem;
 }
 .p-5 {
   padding: 1.25rem;
@@ -2056,10 +2983,6 @@ html {
   padding-left: 1rem;
   padding-right: 1rem;
 }
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -2067,23 +2990,35 @@ html {
 .pb-4 {
   padding-bottom: 1rem;
 }
+.text-center {
+  text-align: center;
+}
 .font-sans {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
 }
 .text-8xl {
   font-size: 6rem;
   line-height: 1;
 }
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
 .font-bold {
   font-weight: 700;
 }
-.text-warning-content {
+.text-base-content {
   --tw-text-opacity: 1;
-  color: hsl(var(--wac, var(--nc)) / var(--tw-text-opacity));
+  color: hsl(var(--bc) / var(--tw-text-opacity));
+}
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .shadow-2xl {
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
@@ -2092,10 +3027,57 @@ html {
 }
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}</style><div data-hk="0-0-0-0-0-0-1" class="flex flex-col mx-auto"><header class="w-full flex justify-center py-4 bg-warning"><span class="text-4xl text-warning-content">⚠ Under construction</span></header><!--#--><div data-hk="0-0-0-0-0-0-2-0" class="container max-w-6xl mx-auto mt-6 min-h-screen"><div data-hk="0-0-0-0-0-0-2-1-0-0" class="w-full items-center flex justify-center gap-8"><a class="inline-block" href="/"><img data-hk="0-0-0-0-0-0-2-1-0-1-0" alt="Bâti logo" src="/batijs.github.io/assets/static/logo.059a8ea3.svg" height="96" width="96"></a><h1 class="font-sans font-bold text-8xl pb-4">Bâti</h1></div><div data-hk="0-0-0-0-0-0-2-1-0-2" class="w-full items-center flex justify-center mt-8"><div class="w-4/5 flex flex-col bg-base-300 px-4 py-8 gap-4 rounded-xl shadow-2xl"><div class="grid place-items-center grid-cols-2"><div data-hk="0-0-0-0-0-0-2-1-0-3-0-0" class="form-control w-full max-w-xs"><label class="label"><span class="label-text">Framework</span></label><!--#--><select data-hk="0-0-0-0-0-0-2-1-0-3-0-1-0" class="select w-full max-w-xs " ><option data-hk="0-0-0-0-0-0-2-1-0-3-0-1-1-0" selected value="solid">SolidJS</option><option data-hk="0-0-0-0-0-0-2-1-0-3-0-1-1-1" disabled value="react">React - Coming Soon</option><option data-hk="0-0-0-0-0-0-2-1-0-3-0-1-1-2" disabled value="vue">Vue - Coming Soon</option></select><!--/--></div><div data-hk="0-0-0-0-0-0-2-1-0-3-1-0" class="form-control w-full max-w-xs"><label class="label"><span class="label-text">Auth</span></label><!--#--><select data-hk="0-0-0-0-0-0-2-1-0-3-1-1-0" class="select w-full max-w-xs " ><option data-hk="0-0-0-0-0-0-2-1-0-3-1-1-1-0" value="">none</option><option data-hk="0-0-0-0-0-0-2-1-0-3-1-1-1-1" selected value="authjs">AuthJS</option><option data-hk="0-0-0-0-0-0-2-1-0-3-1-1-1-2" disabled value="auth0">Auth0 - Coming Soon</option><option data-hk="0-0-0-0-0-0-2-1-0-3-1-1-1-3" disabled value="firebase">Firebase - Coming Soon</option></select><!--/--></div><div data-hk="0-0-0-0-0-0-2-1-0-3-2-0" class="form-control w-full max-w-xs"><label class="label"><span class="label-text">RPC</span></label><!--#--><select data-hk="0-0-0-0-0-0-2-1-0-3-2-1-0" class="select w-full max-w-xs " ><option data-hk="0-0-0-0-0-0-2-1-0-3-2-1-1-0" value="">none</option><option data-hk="0-0-0-0-0-0-2-1-0-3-2-1-1-1" selected value="telefunc">Telefunc</option><option data-hk="0-0-0-0-0-0-2-1-0-3-2-1-1-2" disabled value="trpc">tRPC - Coming Soon</option></select><!--/--></div><div data-hk="0-0-0-0-0-0-2-1-0-3-3-0" class="form-control w-full max-w-xs"><label class="label"><span class="label-text">Server</span></label><!--#--><select data-hk="0-0-0-0-0-0-2-1-0-3-3-1-0" class="select w-full max-w-xs " ><option data-hk="0-0-0-0-0-0-2-1-0-3-3-1-1-0" value="">none</option><option data-hk="0-0-0-0-0-0-2-1-0-3-3-1-1-1" selected value="hattip">Hattip</option><option data-hk="0-0-0-0-0-0-2-1-0-3-3-1-1-2" value="express">Express</option></select><!--/--></div><div data-hk="0-0-0-0-0-0-2-1-0-3-4-0" class="form-control w-full max-w-xs"><label class="label"><span class="label-text">UI</span></label><!--#--><select data-hk="0-0-0-0-0-0-2-1-0-3-4-1-0" class="select w-full max-w-xs " ><option data-hk="0-0-0-0-0-0-2-1-0-3-4-1-1-0" value="">none</option><option data-hk="0-0-0-0-0-0-2-1-0-3-4-1-1-1" selected value="tailwindcss">TailwindCSS</option><option data-hk="0-0-0-0-0-0-2-1-0-3-4-1-1-2" disabled value="unocss">UnoCSS - Coming Soon</option><option data-hk="0-0-0-0-0-0-2-1-0-3-4-1-1-3" disabled value="mui">MUI - Coming Soon</option></select><!--/--></div><div data-hk="0-0-0-0-0-0-2-1-0-3-5-0" class="form-control w-full max-w-xs"><label class="label"><span class="label-text">Database</span></label><!--#--><select data-hk="0-0-0-0-0-0-2-1-0-3-5-1-0" class="select w-full max-w-xs " ><option data-hk="0-0-0-0-0-0-2-1-0-3-5-1-1-0" selected value="">none</option><option data-hk="0-0-0-0-0-0-2-1-0-3-5-1-1-1" value="prisma">Prisma</option><option data-hk="0-0-0-0-0-0-2-1-0-3-5-1-1-2" disabled value="edgedb">EdgeDB - Coming Soon</option></select><!--/--></div><div data-hk="0-0-0-0-0-0-2-1-0-3-6-0" class="form-control w-full max-w-xs"><label class="label"><span class="label-text">Hosting</span></label><!--#--><select data-hk="0-0-0-0-0-0-2-1-0-3-6-1-0" class="select w-full max-w-xs " disabled ><option data-hk="0-0-0-0-0-0-2-1-0-3-6-1-1-0" selected value="">Coming Soon</option><option data-hk="0-0-0-0-0-0-2-1-0-3-6-1-1-1" disabled value="vercel">Vercel - Coming Soon</option><option data-hk="0-0-0-0-0-0-2-1-0-3-6-1-1-2" disabled value="netlify">Netlify - Coming Soon</option></select><!--/--></div><div data-hk="0-0-0-0-0-0-2-1-0-3-7-0" class="form-control w-full max-w-xs"><label class="label"><span class="label-text">Analytics</span></label><!--#--><select data-hk="0-0-0-0-0-0-2-1-0-3-7-1-0" class="select w-full max-w-xs " ><option data-hk="0-0-0-0-0-0-2-1-0-3-7-1-1-0" selected value="">none</option><option data-hk="0-0-0-0-0-0-2-1-0-3-7-1-1-1" value="plausible.io">Plausible.io</option><option data-hk="0-0-0-0-0-0-2-1-0-3-7-1-1-2" disabled value="google-analytics">Google Analytics - Coming Soon</option><option data-hk="0-0-0-0-0-0-2-1-0-3-7-1-1-3" disabled value="segment">Segment - Coming Soon</option></select><!--/--></div><div data-hk="0-0-0-0-0-0-2-1-0-3-8-0" class="form-control w-full max-w-xs"><label class="label"><span class="label-text">Error tracking</span></label><!--#--><select data-hk="0-0-0-0-0-0-2-1-0-3-8-1-0" class="select w-full max-w-xs " disabled ><option data-hk="0-0-0-0-0-0-2-1-0-3-8-1-1-0" selected value="">Coming Soon</option><option data-hk="0-0-0-0-0-0-2-1-0-3-8-1-1-1" disabled value="sentry">Sentry - Coming Soon</option><option data-hk="0-0-0-0-0-0-2-1-0-3-8-1-1-2" disabled value="logrocket">Logrocket - Coming Soon</option></select><!--/--></div></div><div class="divider"></div><div class="px-4"><kbd class="kbd kbd-lg select-all">pnpm create @batijs/app --solid --authjs --telefunc --hattip --tailwindcss my-app</kbd></div></div></div></div><!--/--></div></div>
-        <script type="module" src="/batijs.github.io/assets/entries/entry-client-routing.b02a8f0d.js" defer></script>
-        <link rel="modulepreload" href="/batijs.github.io/assets/entries/pages_index.f8b3fee9.js" as="script" type="text/javascript">
-        <link rel="modulepreload" href="/batijs.github.io/assets/chunks/chunk-9bc95837.js" as="script" type="text/javascript">
+}
+.hover\:btn-error:hover.btn-outline .badge-outline {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--er) / var(--tw-border-opacity));
+  background-color: transparent;
+  --tw-text-opacity: 1;
+  color: hsl(var(--er) / var(--tw-text-opacity));
+}
+.hover\:btn-error:hover {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--er) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--er) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--erc, var(--nc)) / var(--tw-text-opacity));
+}
+.hover\:btn-error:hover:hover,.hover\:btn-error:hover.btn-active {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--er) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--er) / var(--tw-bg-opacity));
+}
+.hover\:btn-error:hover:focus-visible {
+  outline: 2px solid hsl(var(--er));
+}
+.hover\:btn-error:hover.btn-outline {
+  --tw-text-opacity: 1;
+  color: hsl(var(--er) / var(--tw-text-opacity));
+}
+.hover\:btn-error:hover.btn-outline:hover,.hover\:btn-error:hover
+      .btn-outline.btn-active {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--er) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--er) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--erc, var(--nc)) / var(--tw-text-opacity));
+}
+.drawer-toggle:focus-visible ~ .drawer-content .hover\:btn-error:hover.drawer-button {
+  outline: 2px solid hsl(var(--er));
+}
+@media (min-width: 1024px) {
+
+  .lg\:hidden {
+    display: none;
+  }
+}
+</style><div data-hk="0-0-0-0-0-0-0-0-1" class="flex flex-col mx-auto"><div data-hk="0-0-0-0-0-0-0-0-2-0-0-0" class="drawer drawer-mobile"><input id="my-drawer-2" type="checkbox" class="drawer-toggle"><div class="drawer-content flex flex-col items-center justify-start"><!--#--><div data-hk="0-0-0-0-0-0-0-0-2-0-0-1" class="container mt-8"><div class="w-full items-center flex justify-center gap-8"><a class="inline-block" href="/"><img data-hk="0-0-0-0-0-0-0-0-2-0-0-2-0" alt="Bâti logo" src="/batijs.github.io/assets/static/logo.059a8ea3.svg" height="96" width="96"></a><h1 class="font-sans font-bold text-8xl pb-4">Bâti</h1></div><div class="w-full items-center flex justify-center mt-8"><div class="w-4/5 flex flex-col bg-base-300 px-4 py-8 rounded-xl shadow-2xl"><div class="px-4"><kbd class="w-full text-center tooltip-primary inline-flex tooltip-bottom kbd kbd-lg select-all" data-tip="Copied to clipboard!">pnpm create @batijs/app --solid my-app</kbd></div><div class="divider"></div><div class="flex flex-row flex-wrap justify-center gap-4"><div data-hk="0-0-0-0-0-0-0-0-2-0-0-3-0-0" class="form-control w-full max-w-xs "><label class="label"><span class="label-text">Framework</span></label><!--#--><div data-hk="0-0-0-0-0-0-0-0-2-0-0-3-0-1" class="input-group"><!--#--><select data-hk="0-0-0-0-0-0-0-0-2-0-0-3-0-2-0" class="select max-w-xs grow " ><option data-hk="0-0-0-0-0-0-0-0-2-0-0-3-0-2-1-0" selected value="solid">SolidJS ★</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-3-0-2-1-1" disabled value="react">React - Coming Soon</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-3-0-2-1-2" disabled value="vue">Vue - Coming Soon</option></select><!--/--><button class="btn hover:btn-error" title="remove">-</button></div><!--/--></div></div></div></div></div><!--/--><label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Add elements</label></div><div class="drawer-side"><label for="my-drawer-2" class="drawer-overlay"></label><!--#--><ul data-hk="0-0-0-0-0-0-0-0-2-0-0-4-0" class="menu p-4 w-80 bg-base-300 text-base-content"><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-0-0" class="form-control w-full max-w-xs "><label class="label"><span class="label-text">Auth</span></label><!--#--><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-0-1" class="input-group"><!--#--><select data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-0-2-0" class="select max-w-xs grow text-xs " ><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-0-2-1-0" selected value="authjs">AuthJS ★</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-0-2-1-1" disabled value="auth0">Auth0 - Coming Soon</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-0-2-1-2" disabled value="firebase">Firebase - Coming Soon</option></select><!--/--><button class="btn btn-primary">+</button></div><!--/--></div><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-1-0" class="form-control w-full max-w-xs "><label class="label"><span class="label-text">RPC</span></label><!--#--><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-1-1" class="input-group"><!--#--><select data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-1-2-0" class="select max-w-xs grow text-xs " ><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-1-2-1-0" selected value="telefunc">Telefunc ★</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-1-2-1-1" disabled value="trpc">tRPC - Coming Soon</option></select><!--/--><button class="btn btn-primary">+</button></div><!--/--></div><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-2-0" class="form-control w-full max-w-xs "><label class="label"><span class="label-text">Server</span></label><!--#--><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-2-1" class="input-group"><!--#--><select data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-2-2-0" class="select max-w-xs grow text-xs " ><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-2-2-1-0" selected value="hattip">Hattip ★</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-2-2-1-1" value="express">Express</option></select><!--/--><button class="btn btn-primary">+</button></div><!--/--></div><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-3-0" class="form-control w-full max-w-xs "><label class="label"><span class="label-text">UI</span></label><!--#--><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-3-1" class="input-group"><!--#--><select data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-3-2-0" class="select max-w-xs grow text-xs " ><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-3-2-1-0" selected value="tailwindcss">TailwindCSS</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-3-2-1-1" disabled value="unocss">UnoCSS - Coming Soon</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-3-2-1-2" disabled value="mui">MUI - Coming Soon</option></select><!--/--><button class="btn btn-primary">+</button></div><!--/--></div><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-4-0" class="form-control w-full max-w-xs "><label class="label"><span class="label-text">Database</span></label><!--#--><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-4-1" class="input-group"><!--#--><select data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-4-2-0" class="select max-w-xs grow text-xs " ><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-4-2-1-0" selected value="prisma">Prisma</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-4-2-1-1" disabled value="edgedb">EdgeDB - Coming Soon</option></select><!--/--><button class="btn btn-primary">+</button></div><!--/--></div><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-5-0" class="form-control w-full max-w-xs "><label class="label"><span class="label-text">Hosting</span></label><!--#--><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-5-1" class="input-group"><!--#--><select data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-5-2-0" class="select max-w-xs grow text-xs " disabled ><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-5-2-1-0" selected value="">Coming Soon</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-5-2-1-1" disabled value="vercel">Vercel - Coming Soon</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-5-2-1-2" disabled value="netlify">Netlify - Coming Soon</option></select><!--/--><button class="btn btn-primary" disabled>+</button></div><!--/--></div><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-6-0" class="form-control w-full max-w-xs "><label class="label"><span class="label-text">Analytics</span></label><!--#--><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-6-1" class="input-group"><!--#--><select data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-6-2-0" class="select max-w-xs grow text-xs " ><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-6-2-1-0" selected value="plausible.io">Plausible.io</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-6-2-1-1" disabled value="google-analytics">Google Analytics - Coming Soon</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-6-2-1-2" disabled value="segment">Segment - Coming Soon</option></select><!--/--><button class="btn btn-primary">+</button></div><!--/--></div><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-7-0" class="form-control w-full max-w-xs "><label class="label"><span class="label-text">Error tracking</span></label><!--#--><div data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-7-1" class="input-group"><!--#--><select data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-7-2-0" class="select max-w-xs grow text-xs " disabled ><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-7-2-1-0" selected value="">Coming Soon</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-7-2-1-1" disabled value="sentry">Sentry - Coming Soon</option><option data-hk="0-0-0-0-0-0-0-0-2-0-0-4-1-7-2-1-2" disabled value="logrocket">Logrocket - Coming Soon</option></select><!--/--><button class="btn btn-primary" disabled>+</button></div><!--/--></div></ul><!--/--></div></div></div></div>
+        <script type="module" src="/batijs.github.io/assets/entries/entry-client-routing.3a1eef42.js" defer></script>
+        <link rel="modulepreload" href="/batijs.github.io/assets/entries/pages_index.aa8daa7c.js" as="script" type="text/javascript">
+        <link rel="modulepreload" href="/batijs.github.io/assets/chunks/chunk-ddf3265b.js" as="script" type="text/javascript">
         <script id="vite-plugin-ssr_pageContext" type="application/json">{"pageContext":{"_pageId":"/pages/index","pageProps":"!undefined","title":"!undefined"}}</script>
       </body>
     </html>
