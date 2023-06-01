@@ -1,53 +1,34 @@
-import { For } from "solid-js";
-import type { Definition } from "./types";
+import { For, untrack, useContext } from "solid-js";
 import { FormControl } from "components/FormControl";
 import { Select } from "components/Select";
-import { createStore, produce } from "solid-js/store";
 import { startViewTransition } from "components/Flip";
+import { StoreContext } from "components/Store";
 
-export default function DrawerContent(props: {
-  features: Record<string, Definition>;
-  onAdd: (ns: string, def: Definition) => void;
-}) {
-  const [currentFeatures, setCurrentFeatures] = createStore<
-    Record<string, Definition>
-  >(props.features);
+export default function DrawerContent() {
+  const { drawerFeatures, selectFeature, moveFeature } =
+    useContext(StoreContext);
 
   return (
     <ul class="menu p-4 w-80 bg-base-300 text-base-content">
-      <For each={Object.entries(currentFeatures)}>
-        {([ns, fs]) => (
-          <FormControl label={fs.label}>
+      <For each={Object.keys(drawerFeatures())}>
+        {(ns) => (
+          <FormControl label={drawerFeatures()[ns]!.label}>
             <div class="input-group">
               <Select
                 class="grow text-xs"
-                disabled={fs.disabled}
+                disabled={drawerFeatures()[ns]!.disabled}
                 onChange={(e) => {
-                  setCurrentFeatures(
-                    ns,
-                    "features",
-                    fs.features.map((f) => ({
-                      ...f,
-                      selected: e.target.value
-                        ? e.target.value === f.value
-                        : f.label === "none",
-                    }))
-                  );
+                  selectFeature(ns, e.target.value || undefined);
                 }}
-                options={fs.features}
+                options={drawerFeatures()[ns]!.features}
               />
               <button
                 class="btn btn-primary"
-                disabled={fs.disabled}
+                disabled={drawerFeatures()[ns]!.disabled}
                 onClick={() => {
-                  startViewTransition(fs.label, () => {
-                    props.onAdd(ns, JSON.parse(JSON.stringify(fs)));
-                    setCurrentFeatures(
-                      produce((s) => {
-                        delete s[ns];
-                      })
-                    );
-                  });
+                  startViewTransition(untrack(drawerFeatures)[ns]!.label, () =>
+                    moveFeature(ns)
+                  );
                 }}
               >
                 +

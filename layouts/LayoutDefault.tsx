@@ -2,13 +2,14 @@ import "./tailwind.css";
 import css from "./tailwind.css?inline";
 import logoUrl from "../assets/logo.svg";
 import type { JSX } from "solid-js";
+import { StoreProvider } from "components/Store";
 
 export default function LayoutDefault(props: { children?: JSX.Element }) {
   return (
-    <>
+    <StoreProvider>
       {process.env.NODE_ENV === "production" ? <style>{css}</style> : ""}
       <div class="flex flex-col mx-auto">{props.children}</div>
-    </>
+    </StoreProvider>
   );
 }
 

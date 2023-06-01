@@ -1,6 +1,7 @@
 {
   "framework": {
     "label": "Framework",
+    "inview": true,
     "features": [
       {
         "label": "SolidJS ★",

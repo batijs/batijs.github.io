@@ -1,5 +1,6 @@
 export interface Definition {
   disabled?: boolean;
+  inview?: boolean;
   label: string;
   features: Feature[];
 }
