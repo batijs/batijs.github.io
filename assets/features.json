@@ -98,9 +98,8 @@
         "selected": true
       },
       {
-        "label": "EdgeDB - Coming Soon",
-        "value": "edgedb",
-        "disabled": true
+        "label": "EdgeDB",
+        "value": "edgedb"
       }
     ]
   },
