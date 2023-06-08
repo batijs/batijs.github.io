@@ -45,7 +45,7 @@ export default {
     image(),
     esbuild({
       sourceMap: false,
-      minify: true,
+      minify: false,
       target: "es2020",
       define: {
         "process.env.NODE_ENV": JSON.stringify("production"),

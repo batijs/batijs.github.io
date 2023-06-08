@@ -5,11 +5,13 @@ import Drawer from "./Drawer";
 import DrawerContent from "./DrawerContent";
 import { Select } from "components/Select";
 import { FormControl } from "components/FormControl";
-// ts-ignore is here to avoid removing import when trying to optimize them
-// @ts-ignore
 import { copy } from "components/Copy";
 import { startViewTransition } from "components/Flip";
 import { StoreContext } from "components/Store";
+
+// avoid removing import when trying to optimize them
+// https://github.com/solidjs/solid/discussions/845
+const _copy = copy;
 
 export default function App() {
   const { featuresValues, inViewFeatures, selectFeature, moveFeature } =
