@@ -1,12 +1,12 @@
 {
   "name": "@batijs/elements",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "BatiJS website as Web Components",
   "type": "module",
   "scripts": {
     "dev": "hattip serve ./hattip-entry.ts --client",
     "build": "vite build",
-    "release": "pnpm run build:element && pnpm publish",
+    "release": "pnpm run build:widget && pnpm publish",
     "build:widget": "rollup -c",
     "build:pages": "vite build --mode pages",
     "serve:widget": "http-server . -c-1 -p 8080 -o /widget-public"
