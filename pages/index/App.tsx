@@ -1,11 +1,10 @@
 import { Logo } from "components/Logo";
 import features from "assets/features.json";
 import { createMemo, For, Show, useContext } from "solid-js";
-import DrawerContent from "./DrawerContent";
+import Features from "./Features";
 import { copy } from "components/Copy";
 import { StoreContext } from "components/Store";
 import { flip } from "components/Flip";
-import { ChevronRight } from "lucide-solid";
 
 // avoid removing import when trying to optimize them
 // https://github.com/solidjs/solid/discussions/845
@@ -25,8 +24,7 @@ function word(w: string, ns?: string): Word {
 }
 
 export default function App(props: { widget?: boolean }) {
-  const { featuresValues, inViewFeatures, selectFeature, moveFeature } =
-    useContext(StoreContext);
+  const { featuresValues } = useContext(StoreContext);
   const keys = Object.keys(features);
 
   function getFlags() {
@@ -55,14 +53,27 @@ export default function App(props: { widget?: boolean }) {
         </div>
       </Show>
       <div class="w-full items-center flex justify-center mt-8">
-        <div class="w-4/5 flex flex-col bg-base-300 px-4 py-8 rounded-xl shadow-2xl">
+        <div class="w-4/5 flex flex-col bg-base-300 px-4 py-8 rounded-xl shadow-2xl relative">
           <div class="px-4 flex">
             <kbd
               class="group relative flex-1 justify-start pl-10 tooltip-primary inline-flex tooltip-bottom kbd kbd-lg select-all flex-wrap leading-10"
               use:copy
               data-tip="Copied to clipboard!"
             >
-              <ChevronRight class="absolute top-2.5 left-2.5 opacity-50" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-chevron-right absolute top-2.5 left-2.5 opacity-50"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
               <For each={words()}>
                 {({ word }: Word) => (
                   <span class="mr-3 relative whitespace-nowrap">{word}</span>
@@ -72,8 +83,14 @@ export default function App(props: { widget?: boolean }) {
           </div>
           <div class="divider"></div>
           <div class="flex flex-row flex-wrap flex-1 justify-center gap-4">
-            <DrawerContent />
+            <Features />
           </div>
+          {/*<Show when={!props.widget}>*/}
+          {/*  <div class="absolute right-2 bottom-2 overflow-hidden opacity-60 group flex gap-2 text-sm items-end">*/}
+          {/*    <span class="hidden group-hover:inline">Powered by Bâti</span>*/}
+          {/*    <Logo class="rounded-md" size={24} />*/}
+          {/*  </div>*/}
+          {/*</Show>*/}
         </div>
       </div>
     </div>

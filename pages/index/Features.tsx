@@ -1,10 +1,9 @@
 import { For, useContext } from "solid-js";
 import { FormControl } from "components/FormControl";
 import { Select } from "components/Select";
-import { startViewTransition } from "components/Flip";
 import { StoreContext } from "components/Store";
 
-export default function DrawerContent() {
+export default function Features() {
   const { currentFeatures, selectFeature, moveFeature } =
     useContext(StoreContext);
 
@@ -32,9 +31,7 @@ export default function DrawerContent() {
                     }}
                     class="checkbox rounded bg-base-100"
                     disabled={f.disabled}
-                    onClick={() => {
-                      startViewTransition(ns, () => moveFeature(ns));
-                    }}
+                    onChange={() => moveFeature(ns)}
                   />
                 </div>
                 <Select
