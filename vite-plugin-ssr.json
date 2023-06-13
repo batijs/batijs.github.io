@@ -2,10 +2,10 @@
   "version": "0.4.131",
   "usesClientRouter": false,
   "manifestKeyMap": {
-    "vike-solid/renderer/+onRenderHtml.js": "node_modules/.pnpm/vike-solid@0.0.7_solid-js@1.7.5/node_modules/vike-solid/dist/_onRenderHtml.js",
-    "vike-solid/renderer/+onRenderClient.js": "node_modules/.pnpm/vike-solid@0.0.7_solid-js@1.7.5/node_modules/vike-solid/dist/_onRenderClient.js",
-    "vike-solid/renderer/+config.js": "node_modules/.pnpm/vike-solid@0.0.7_solid-js@1.7.5/node_modules/vike-solid/dist/_config.js",
-    "vike-solid/renderer/+passToClient.js": "node_modules/.pnpm/vike-solid@0.0.7_solid-js@1.7.5/node_modules/vike-solid/dist/_passToClient.js"
+    "vike-solid/renderer/+onRenderHtml.js": "node_modules/.pnpm/vike-solid@0.0.7_solid-js@1.7.6/node_modules/vike-solid/dist/_onRenderHtml.js",
+    "vike-solid/renderer/+onRenderClient.js": "node_modules/.pnpm/vike-solid@0.0.7_solid-js@1.7.6/node_modules/vike-solid/dist/_onRenderClient.js",
+    "vike-solid/renderer/+config.js": "node_modules/.pnpm/vike-solid@0.0.7_solid-js@1.7.6/node_modules/vike-solid/dist/_config.js",
+    "vike-solid/renderer/+passToClient.js": "node_modules/.pnpm/vike-solid@0.0.7_solid-js@1.7.6/node_modules/vike-solid/dist/_passToClient.js"
   },
   "baseServer": "/batijs.github.io/",
   "baseAssets": "/batijs.github.io/",
