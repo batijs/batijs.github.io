@@ -15,7 +15,8 @@ export function copy(el: HTMLElement) {
     clearTimeout(clear);
     const selObj = window.getSelection();
     if (selObj) {
-      await navigator.clipboard.writeText(selObj.toString());
+      const toCopy = selObj.toString().replaceAll("\n", " ");
+      await navigator.clipboard.writeText(toCopy);
       el.classList.add("tooltip", "tooltip-open");
 
       clear = setTimeout(() => {

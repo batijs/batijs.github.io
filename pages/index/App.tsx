@@ -1,19 +1,30 @@
 import { Logo } from "components/Logo";
 import features from "assets/features.json";
-import { createMemo, For, untrack, useContext } from "solid-js";
-import Drawer from "./Drawer";
+import { createMemo, For, Show, useContext } from "solid-js";
 import DrawerContent from "./DrawerContent";
-import { Select } from "components/Select";
-import { FormControl } from "components/FormControl";
 import { copy } from "components/Copy";
-import { startViewTransition } from "components/Flip";
 import { StoreContext } from "components/Store";
+import { flip } from "components/Flip";
+import { ChevronRight } from "lucide-solid";
 
 // avoid removing import when trying to optimize them
 // https://github.com/solidjs/solid/discussions/845
 const _copy = copy;
+const _flip = flip;
 
-export default function App() {
+interface Word {
+  word: string;
+  ns?: string;
+}
+
+function word(w: string, ns?: string): Word {
+  return {
+    word: w,
+    ns,
+  };
+}
+
+export default function App(props: { widget?: boolean }) {
   const { featuresValues, inViewFeatures, selectFeature, moveFeature } =
     useContext(StoreContext);
   const keys = Object.keys(features);
@@ -21,71 +32,51 @@ export default function App() {
   function getFlags() {
     return keys
       .filter((ns) => featuresValues()[ns])
-      .map((ns) => `--${featuresValues()[ns]}`);
+      .map((ns) => word(`--${featuresValues()[ns]}`, ns));
   }
 
   const words = createMemo(() => [
-    "pnpm",
-    "create",
-    "@batijs/app",
+    word("pnpm"),
+    word("create"),
+    word("@batijs/app"),
     ...getFlags(),
-    "my-app",
+    word("my-app"),
   ]);
 
   return (
-    <Drawer drawer={<DrawerContent />}>
-      <div class="container mt-8">
+    // <Drawer drawer={<DrawerContent />}>
+    <div class="container mt-8">
+      <Show when={!props.widget}>
         <div class="w-full items-center flex justify-center gap-8">
           <a class="inline-block" href="/">
             <Logo size={96} />
           </a>
           <h1 class="font-sans font-bold text-8xl pb-4">Bâti</h1>
         </div>
-        <div class="w-full items-center flex justify-center mt-8">
-          <div class="w-4/5 flex flex-col bg-base-300 px-4 py-8 rounded-xl shadow-2xl">
-            <div class="px-4">
-              <kbd
-                class="w-full text-center tooltip-primary inline-flex tooltip-bottom kbd kbd-lg select-all"
-                use:copy
-                data-tip="Copied to clipboard!"
-              >
-                {words().join(" ")}
-              </kbd>
-            </div>
-            <div class="divider"></div>
-            <div class="flex flex-row flex-wrap justify-center gap-4">
-              <For each={Object.keys(inViewFeatures())}>
-                {(ns) => (
-                  <FormControl label={inViewFeatures()[ns]!.label}>
-                    <div class="input-group">
-                      <Select
-                        class="grow"
-                        disabled={inViewFeatures()[ns]!.disabled}
-                        onChange={(e) =>
-                          selectFeature(ns, e.target.value || undefined)
-                        }
-                        options={inViewFeatures()[ns]!.features}
-                      />
-                      <button
-                        class="btn hover:btn-error"
-                        title="remove"
-                        onClick={() => {
-                          startViewTransition(
-                            untrack(inViewFeatures)[ns]!.label,
-                            () => moveFeature(ns)
-                          );
-                        }}
-                      >
-                        -
-                      </button>
-                    </div>
-                  </FormControl>
+      </Show>
+      <div class="w-full items-center flex justify-center mt-8">
+        <div class="w-4/5 flex flex-col bg-base-300 px-4 py-8 rounded-xl shadow-2xl">
+          <div class="px-4 flex">
+            <kbd
+              class="group relative flex-1 justify-start pl-10 tooltip-primary inline-flex tooltip-bottom kbd kbd-lg select-all flex-wrap leading-10"
+              use:copy
+              data-tip="Copied to clipboard!"
+            >
+              <ChevronRight class="absolute top-2.5 left-2.5 opacity-50" />
+              <For each={words()}>
+                {({ word }: Word) => (
+                  <span class="mr-3 relative whitespace-nowrap">{word}</span>
                 )}
               </For>
-            </div>
+            </kbd>
+          </div>
+          <div class="divider"></div>
+          <div class="flex flex-row flex-wrap flex-1 justify-center gap-4">
+            <DrawerContent />
           </div>
         </div>
       </div>
-    </Drawer>
+    </div>
+    // </Drawer>
   );
 }

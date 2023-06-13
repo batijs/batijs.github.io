@@ -5,7 +5,7 @@ export default function Drawer(props: {
   drawer: JSX.Element;
 }) {
   return (
-    <div class="drawer drawer-mobile">
+    <div class="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content flex flex-col items-center justify-start">
         {props.children}

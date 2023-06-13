@@ -12,8 +12,9 @@ declare module "solid-js" {
   }
 }
 
-export function flip(el: HTMLElement, accessor: Accessor<string>) {
+export function flip(el: HTMLElement, accessor: Accessor<string | undefined>) {
   const name = accessor();
+  if (!name) return;
   el.setAttribute("data-flip-name", name);
   (el.style as any).viewTransitionName = name;
 }

@@ -1,4 +1,4 @@
 import { customElement } from "solid-element";
-import App from "./AppWithLayout";
+import App from "./AppWidget";
 
-customElement("bati-widget", App);
+customElement("bati-widget", { widget: true }, App);

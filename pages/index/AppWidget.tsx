@@ -12,10 +12,10 @@ function LayoutDefault(props: { children?: JSX.Element }) {
   );
 }
 
-export default function AppWithLayout() {
+export default function AppWidget(props: { widget?: boolean }) {
   return (
     <LayoutDefault>
-      <App />
+      <App {...props} />
     </LayoutDefault>
   );
 }

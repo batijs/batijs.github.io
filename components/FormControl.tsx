@@ -8,12 +8,13 @@ const _flip = flip;
 export function FormControl(props: {
   children: JSX.Element;
   label: string;
+  flipLabel?: string;
   class?: string;
 }) {
   return (
     <div
-      class={"form-control w-full max-w-xs " + (props.class ?? "")}
-      use:flip={props.label}
+      class={"form-control max-w-xs " + (props.class ?? "")}
+      use:flip={props.flipLabel}
     >
       <label class="label">
         <span class="label-text">{props.label}</span>

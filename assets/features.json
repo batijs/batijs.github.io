@@ -70,7 +70,7 @@
     ]
   },
   "uikit": {
-    "label": "UI",
+    "label": "CSS",
     "features": [
       {
         "label": "TailwindCSS",

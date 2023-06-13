@@ -57,6 +57,7 @@ function initStore() {
     moveFeature,
     selectFeature,
     featuresValues,
+    currentFeatures,
   };
 }
 
