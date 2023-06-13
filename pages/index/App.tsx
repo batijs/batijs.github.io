@@ -56,7 +56,7 @@ export default function App(props: { widget?: boolean }) {
         <div class="w-4/5 flex flex-col bg-base-300 px-4 py-8 rounded-xl shadow-2xl relative">
           <div class="px-4 flex">
             <kbd
-              class="group relative flex-1 justify-start pl-10 tooltip-primary inline-flex tooltip-bottom kbd kbd-lg select-all flex-wrap leading-10"
+              class="group relative flex-1 justify-start pl-10 tooltip-primary inline-flex tooltip-bottom kbd kbd-lg select-all flex-wrap leading-10 gap-2.5"
               use:copy
               data-tip="Copied to clipboard!"
             >
@@ -76,7 +76,7 @@ export default function App(props: { widget?: boolean }) {
               </svg>
               <For each={words()}>
                 {({ word }: Word) => (
-                  <span class="mr-3 relative whitespace-nowrap">{word}</span>
+                  <span class="relative whitespace-nowrap">{word}</span>
                 )}
               </For>
             </kbd>

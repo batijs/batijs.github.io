@@ -16,18 +16,21 @@ export default function Features() {
             <FormControl label={f.label} flipLabel={ns}>
               <div class="join group">
                 <div
-                  class="join-item flex justify-center items-center px-2 border bg-base-100"
+                  class="join-item flex justify-center items-center px-2 border border-solid bg-base-100"
                   classList={{
-                    "border-success": f.inview,
-                    "border-base-200 bg-base-200 opacity-70": f.disabled,
-                    "border-primary": !f.disabled,
+                    "border-success": Boolean(f.inview),
+                    "border-base-200 bg-base-200 opacity-70": Boolean(
+                      f.disabled
+                    ),
+                    "border-primary": !f.inview && !f.disabled,
                   }}
                 >
                   <input
                     type="checkbox"
                     checked={f.inview}
                     classList={{
-                      "checkbox-success": f.inview,
+                      "checkbox-success": Boolean(f.inview),
+                      "border-solid": !f.disabled,
                     }}
                     class="checkbox rounded bg-base-100"
                     disabled={f.disabled}
