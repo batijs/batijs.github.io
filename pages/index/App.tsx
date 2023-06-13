@@ -3,7 +3,7 @@ import { Widget } from "components/Widget";
 
 export default function App() {
   return (
-    <div class="container mt-8">
+    <div class="mt-8">
       <div class="w-full items-center flex justify-center gap-8">
         <a class="inline-block" href="/">
           <Logo size={96} />
