@@ -11,26 +11,41 @@
     header {
         height: 10rem;
         width: 100%;
-        display: block;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
     }
 
     footer {
         height: 10rem;
         width: 100%;
-        display: block;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+    }
+
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-items: center;
+        gap: 1rem;
     }
 
     bati-widget {
-        width: 100%;
         display: block;
         overflow: auto;
+        padding: 0 30px 60px;
     }
   </style>
 </head>
 <body>
-  <header>HEADER</header>
-  <bati-widget theme="light"></bati-widget>
-  <bati-widget theme="dark"></bati-widget>
-  <footer>FOOTER</footer>
+  <header><h1>HEADER</h1></header>
+  <div class="container">
+    <bati-widget theme="light"></bati-widget>
+    <bati-widget theme="dark"></bati-widget>
+  </div>
+  <footer><h1>FOOTER</h1></footer>
 </body>
 </html>

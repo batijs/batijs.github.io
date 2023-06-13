@@ -11,7 +11,7 @@ export default function App() {
         <h1 class="font-sans font-bold text-8xl pb-4">Bâti</h1>
       </div>
       <div class="w-full items-center flex justify-center mt-8">
-        <Widget />
+        <Widget widget={false} />
       </div>
     </div>
   );

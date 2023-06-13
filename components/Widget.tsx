@@ -22,7 +22,7 @@ function word(w: string, ns?: string): Word {
   };
 }
 
-export function Widget(props: { theme?: string }) {
+export function Widget(props: { theme?: string; widget: boolean }) {
   const { featuresValues } = useContext(StoreContext);
   const keys = Object.keys(features);
 
@@ -43,7 +43,10 @@ export function Widget(props: { theme?: string }) {
   return (
     <div
       data-theme={props.theme}
-      class="w-4/5 flex flex-col bg-base-300 px-4 py-8 rounded-xl shadow-2xl relative bati-widget"
+      class="flex flex-col bg-base-300 px-4 py-8 rounded-xl shadow-2xl relative bati-widget"
+      classList={{
+        "w-4/5": !props.widget,
+      }}
     >
       <div class="px-4 flex">
         <kbd

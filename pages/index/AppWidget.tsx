@@ -15,7 +15,7 @@ function LayoutDefault(props: { children?: JSX.Element }) {
 export default function AppWidget(props: { theme?: string }) {
   return (
     <LayoutDefault>
-      <Widget theme={props.theme} />
+      <Widget widget={true} theme={props.theme} />
     </LayoutDefault>
   );
 }
