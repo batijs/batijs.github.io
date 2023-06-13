@@ -21,8 +21,8 @@ export default {
   plugins: [
     postcss({
       config: false,
-      extensions: [".css", ".module.css"],
-      inject: true,
+      extensions: [".css"],
+      inject: false,
       plugins: [
         autoprefixer(),
         tailwindcss({
@@ -35,8 +35,17 @@ export default {
           theme: {
             extend: {},
           },
+          daisyui: {
+            themes: ["light", "dark"],
+          },
           plugins: [daisyui],
         }),
+        {
+          postcssPlugin: "guy-guyt",
+          Rule(rule) {
+            rule.selector = rule.selector.replaceAll(":root", ".bati-widget");
+          },
+        },
       ],
     }),
     tsConfigPaths(),
