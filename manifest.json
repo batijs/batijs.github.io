@@ -18,7 +18,7 @@
       "virtual:vite-plugin-ssr:importPageCode:client:/pages/_error",
       "virtual:vite-plugin-ssr:importPageCode:client:/pages/index"
     ],
-    "file": "assets/entries/entry-client-routing.d1684fc2.js",
+    "file": "assets/entries/entry-client-routing.288f48de.js",
     "isEntry": true,
     "src": "node_modules/.pnpm/vite-plugin-ssr@0.4.131_vite@4.3.9/node_modules/vite-plugin-ssr/dist/esm/client/router/entry.js"
   },
@@ -35,7 +35,7 @@
     "assets": [
       "assets/static/logo.059a8ea3.svg"
     ],
-    "file": "assets/entries/pages_index.6f14b535.js",
+    "file": "assets/entries/pages_index.7b7c4821.js",
     "imports": [
       "_chunk-041a6fb0.js"
     ],
