@@ -9,9 +9,8 @@
         "selected": true
       },
       {
-        "label": "React - Coming Soon",
-        "value": "react",
-        "disabled": true
+        "label": "React",
+        "value": "react"
       },
       {
         "label": "Vue - Coming Soon",
