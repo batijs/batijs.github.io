@@ -1,4 +1,4 @@
-import { createMemo, For, useContext } from "solid-js";
+import { createMemo, useContext } from "solid-js";
 import Features from "components/Features";
 import { StoreContext } from "components/Store";
 import features from "assets/features.json";
@@ -10,18 +10,6 @@ import { flip } from "components/Flip";
 const _copy = copy;
 const _flip = flip;
 
-interface Word {
-  word: string;
-  ns?: string;
-}
-
-function word(w: string, ns?: string): Word {
-  return {
-    word: w,
-    ns,
-  };
-}
-
 export function Widget(props: { theme?: string; widget: boolean }) {
   const { featuresValues } = useContext(StoreContext);
   const keys = Object.keys(features);
@@ -29,15 +17,15 @@ export function Widget(props: { theme?: string; widget: boolean }) {
   function getFlags() {
     return keys
       .filter((ns) => featuresValues()[ns])
-      .map((ns) => word(`--${featuresValues()[ns]}`, ns));
+      .map((ns) => `--${featuresValues()[ns]}`);
   }
 
   const words = createMemo(() => [
-    word("pnpm"),
-    word("create"),
-    word("@batijs/app"),
+    "pnpm",
+    "create",
+    "@batijs/app",
     ...getFlags(),
-    word("my-app"),
+    "my-app",
   ]);
 
   return (
@@ -50,7 +38,7 @@ export function Widget(props: { theme?: string; widget: boolean }) {
     >
       <div class="px-4 flex">
         <kbd
-          class="group relative flex-1 justify-start pl-10 tooltip-primary inline-flex tooltip-bottom kbd kbd-lg select-all flex-wrap leading-10 gap-2.5"
+          class="group relative flex-1 justify-start pl-10 tooltip-primary text-left inline-flex tooltip-bottom kbd kbd-lg select-all flex-wrap leading-10 gap-2.5"
           use:copy
           data-tip="Copied to clipboard!"
         >
@@ -68,11 +56,7 @@ export function Widget(props: { theme?: string; widget: boolean }) {
           >
             <polyline points="9 18 15 12 9 6" />
           </svg>
-          <For each={words()}>
-            {({ word }: Word) => (
-              <span class="relative whitespace-nowrap">{word}</span>
-            )}
-          </For>
+          {words().join(" ")}
         </kbd>
       </div>
       <div class="divider"></div>
