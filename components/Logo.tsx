@@ -3,7 +3,7 @@ import logoUrl from "assets/logo.svg";
 export function Logo(props: { size: number; class?: string }) {
   return (
     <img
-      alt="Bâti logo"
+      alt="Bati logo"
       src={logoUrl}
       height={props.size}
       width={props.size}
