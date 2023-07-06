@@ -41,7 +41,7 @@ export default {
           plugins: [daisyui],
         }),
         {
-          postcssPlugin: "guy-guyt",
+          postcssPlugin: "fix-css-wc-scope",
           Rule(rule) {
             rule.selector = rule.selector.replaceAll(":root", ".bati-widget");
           },

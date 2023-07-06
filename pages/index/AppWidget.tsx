@@ -1,5 +1,5 @@
 import type { JSX } from "solid-js";
-import css from "layouts/tailwind.css";
+import css from "layouts/tailwind.css?inline";
 import { StoreProvider } from "components/Store";
 import { Widget } from "components/Widget";
 
