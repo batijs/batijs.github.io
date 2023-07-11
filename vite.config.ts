@@ -54,31 +54,36 @@ export default defineConfig(({ mode, command }) => {
         "process.env.NODE_ENV": JSON.stringify("production"),
       },
       css: {
-        inject: false,
-        plugins: [
-          autoprefixer(),
-          tailwindcss({
-            corePlugins: {
-              preflight: false,
+        postcss: {
+          inject: false,
+          plugins: [
+            autoprefixer(),
+            tailwindcss({
+              corePlugins: {
+                preflight: false,
+              },
+              content: [
+                "./{pages,layouts,components,src}/**/*.{html,js,jsx,ts,tsx}",
+              ],
+              theme: {
+                extend: {},
+              },
+              daisyui: {
+                themes: ["light", "dark"],
+              },
+              plugins: [daisyui],
+            }),
+            {
+              postcssPlugin: "fix-css-wc-scope",
+              Rule(rule) {
+                rule.selector = rule.selector.replaceAll(
+                  ":root",
+                  ".bati-widget"
+                );
+              },
             },
-            content: [
-              "./{pages,layouts,components,src}/**/*.{html,js,jsx,ts,tsx}",
-            ],
-            theme: {
-              extend: {},
-            },
-            daisyui: {
-              themes: ["light", "dark"],
-            },
-            plugins: [daisyui],
-          }),
-          {
-            postcssPlugin: "fix-css-wc-scope",
-            Rule(rule) {
-              rule.selector = rule.selector.replaceAll(":root", ".bati-widget");
-            },
-          },
-        ],
+          ],
+        },
       },
       plugins: [
         tsConfigPaths(),
@@ -91,7 +96,7 @@ export default defineConfig(({ mode, command }) => {
   if (mode === "pages") {
     return {
       plugins: [
-        tsconfigPaths(),
+        tsConfigPaths(),
         solid({
           vps: {
             prerender: true,
