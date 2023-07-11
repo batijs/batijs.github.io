@@ -13,7 +13,7 @@ export function FormControl(props: {
 }) {
   return (
     <div
-      class={"form-control max-w-xs " + (props.class ?? "")}
+      class={"form-control sm:max-w-xs " + (props.class ?? "")}
       use:flip={props.flipLabel}
     >
       <label class="label">

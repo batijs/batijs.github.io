@@ -13,8 +13,12 @@ export default function Features() {
         {(ns) => {
           const f = currentFeatures[ns];
           return (
-            <FormControl label={f.label} flipLabel={ns}>
-              <div class="join group">
+            <FormControl
+              label={f.label}
+              flipLabel={ns}
+              class="w-full sm:w-auto"
+            >
+              <div class="join group w-full">
                 <div
                   class="join-item flex justify-center items-center px-2 border border-solid bg-base-100"
                   classList={{
@@ -38,7 +42,7 @@ export default function Features() {
                   />
                 </div>
                 <Select
-                  class="text-xs join-item border-l-0 pl-1"
+                  class="text-xs join-item border-l-0 pl-1 w-full"
                   classList={{
                     "select-primary": !f.inview,
                     "select-success": Boolean(f.inview),

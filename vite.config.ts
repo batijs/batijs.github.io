@@ -93,19 +93,15 @@ export default defineConfig(({ mode, command }) => {
     };
   }
 
-  if (mode === "pages") {
-    return {
-      plugins: [
-        tsConfigPaths(),
-        solid({
-          vps: {
-            prerender: true,
-            disableAutoFullBuild: false,
-          },
-        }),
-      ],
-    };
-  }
-
-  throw new Error(`Unsupported vite build mode "${mode}"`);
+  return {
+    plugins: [
+      tsConfigPaths(),
+      solid({
+        vps: {
+          prerender: true,
+          disableAutoFullBuild: false,
+        },
+      }),
+    ],
+  };
 });

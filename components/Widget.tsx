@@ -1,9 +1,9 @@
-import {createMemo, useContext} from "solid-js";
+import { createMemo, useContext } from "solid-js";
 import Features from "components/Features";
-import {StoreContext} from "components/Store";
+import { StoreContext } from "components/Store";
 import features from "assets/features.json";
-import {copy} from "components/Copy";
-import {flip} from "components/Flip";
+import { copy } from "components/Copy";
+import { flip } from "components/Flip";
 
 // avoid removing import when trying to optimize them
 // https://github.com/solidjs/solid/discussions/845
@@ -63,12 +63,6 @@ export function Widget(props: { theme?: string; widget: boolean }) {
       <div class="flex flex-row flex-wrap flex-1 justify-center gap-4">
         <Features />
       </div>
-      {/*<Show when={!props.widget}>*/}
-      {/*  <div class="absolute right-2 bottom-2 overflow-hidden opacity-60 group flex gap-2 text-sm items-end">*/}
-      {/*    <span class="hidden group-hover:inline">Powered by Bati</span>*/}
-      {/*    <Logo class="rounded-md" size={24} />*/}
-      {/*  </div>*/}
-      {/*</Show>*/}
     </div>
   );
 }
