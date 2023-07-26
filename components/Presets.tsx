@@ -14,7 +14,7 @@ function Preset(props: {
   return (
     <button
       type="button"
-      class={"card card-compact bg-base-100 " + (props.class ?? "")}
+      class={"card card-compact border-0 bg-base-100 " + (props.class ?? "")}
       onclick={() => !props.disabled && selectPreset(props.features)}
       classList={{
         "cursor-default opacity-50": props.disabled,
@@ -30,7 +30,7 @@ function Preset(props: {
 
 export default function Presets() {
   return (
-    <div class="w-full px-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+    <div class="w-full px-4 box-border grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
       <Preset
         title="Plain Vike"
         class="hover:outline outline-amber-500 outline-1 outline-offset-2"

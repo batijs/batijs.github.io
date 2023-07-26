@@ -8,7 +8,7 @@ export default function Features() {
     useContext(StoreContext);
 
   return (
-    <div class="flex flex-wrap gap-4 px-4 w-full relative">
+    <div class="flex flex-wrap gap-4 px-4 box-border w-full relative">
       <For each={Object.keys(currentFeatures) as Features[]}>
         {(ns) => {
           const f = currentFeatures[ns];
