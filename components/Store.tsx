@@ -78,6 +78,7 @@ function initStore() {
     featuresValues,
     currentFeatures,
     getBottomPanel,
+    setBottomPanel,
     selectPreset,
   };
 }
