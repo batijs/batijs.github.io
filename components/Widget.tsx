@@ -1,9 +1,10 @@
-import { createMemo, useContext } from "solid-js";
+import { createMemo, Match, Switch, useContext } from "solid-js";
 import Features from "components/Features";
 import { StoreContext } from "components/Store";
 import features from "assets/features.json";
 import { copy } from "components/Copy";
 import { flip } from "components/Flip";
+import Presets from "components/Presets";
 
 // avoid removing import when trying to optimize them
 // https://github.com/solidjs/solid/discussions/845
@@ -11,7 +12,7 @@ const _copy = copy;
 const _flip = flip;
 
 export function Widget(props: { theme?: string; widget: boolean }) {
-  const { featuresValues } = useContext(StoreContext);
+  const { featuresValues, getBottomPanel } = useContext(StoreContext);
   const keys = Object.keys(features);
 
   function getFlags() {
@@ -61,7 +62,14 @@ export function Widget(props: { theme?: string; widget: boolean }) {
       </div>
       <div class="divider"></div>
       <div class="flex flex-row flex-wrap flex-1 justify-center gap-4">
-        <Features />
+        <Switch>
+          <Match when={getBottomPanel() === 0}>
+            <Presets />
+          </Match>
+          <Match when={getBottomPanel() === 1}>
+            <Features />
+          </Match>
+        </Switch>
       </div>
     </div>
   );
