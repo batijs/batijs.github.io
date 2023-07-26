@@ -1,31 +1,31 @@
 {
   "LayoutDefault.css": {
-    "file": "assets/static/LayoutDefault.d46223b6.css",
+    "file": "assets/static/LayoutDefault.18025015.css",
     "src": "LayoutDefault.css"
   },
-  "_chunk-07f5444f.js": {
+  "_chunk-80c71cfb.js": {
     "css": [
-      "assets/static/LayoutDefault.d46223b6.css"
+      "assets/static/LayoutDefault.18025015.css"
     ],
-    "file": "assets/chunks/chunk-07f5444f.js"
+    "file": "assets/chunks/chunk-80c71cfb.js"
   },
   "assets/logo.svg": {
     "file": "assets/static/logo.059a8ea3.svg",
     "src": "assets/logo.svg"
   },
-  "node_modules/.pnpm/vite-plugin-ssr@0.4.133_vite@4.4.2/node_modules/vite-plugin-ssr/dist/esm/client/router/entry.js": {
+  "node_modules/.pnpm/vite-plugin-ssr@0.4.133_vite@4.4.7/node_modules/vite-plugin-ssr/dist/esm/client/router/entry.js": {
     "dynamicImports": [
       "virtual:vite-plugin-ssr:importPageCode:client:/pages/_error",
       "virtual:vite-plugin-ssr:importPageCode:client:/pages/index"
     ],
-    "file": "assets/entries/entry-client-routing.ac8bf081.js",
+    "file": "assets/entries/entry-client-routing.342b8700.js",
     "isEntry": true,
-    "src": "node_modules/.pnpm/vite-plugin-ssr@0.4.133_vite@4.4.2/node_modules/vite-plugin-ssr/dist/esm/client/router/entry.js"
+    "src": "node_modules/.pnpm/vite-plugin-ssr@0.4.133_vite@4.4.7/node_modules/vite-plugin-ssr/dist/esm/client/router/entry.js"
   },
   "virtual:vite-plugin-ssr:importPageCode:client:/pages/_error": {
-    "file": "assets/entries/pages_error.1fd9078d.js",
+    "file": "assets/entries/pages_error.f25e333a.js",
     "imports": [
-      "_chunk-07f5444f.js"
+      "_chunk-80c71cfb.js"
     ],
     "isDynamicEntry": true,
     "isEntry": true,
@@ -35,9 +35,9 @@
     "assets": [
       "assets/static/logo.059a8ea3.svg"
     ],
-    "file": "assets/entries/pages_index.d4acfb27.js",
+    "file": "assets/entries/pages_index.66746866.js",
     "imports": [
-      "_chunk-07f5444f.js"
+      "_chunk-80c71cfb.js"
     ],
     "isDynamicEntry": true,
     "isEntry": true,
