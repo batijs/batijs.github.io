@@ -1,4 +1,5 @@
 import type { Config } from "vike-solid";
+import vikeSolid from "vike-solid";
 import Layout from "../layouts/LayoutDefault";
 import Head from "../layouts/Head";
 
@@ -11,4 +12,5 @@ export default {
   title: "Bati",
   // <meta name="description">
   description: "Bati",
+  extends: vikeSolid,
 } satisfies Config;

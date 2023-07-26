@@ -1,18 +1,47 @@
-import { createMemo, useContext } from "solid-js";
+import {
+  createEffect,
+  createMemo,
+  createSignal,
+  on,
+  Show,
+  useContext,
+} from "solid-js";
 import Features from "components/Features";
 import { StoreContext } from "components/Store";
 import features from "assets/features.json";
 import { copy } from "components/Copy";
 import { flip } from "components/Flip";
+import Presets from "components/Presets";
 
 // avoid removing import when trying to optimize them
 // https://github.com/solidjs/solid/discussions/845
 const _copy = copy;
 const _flip = flip;
 
+const sliderDuration = 300;
+
 export function Widget(props: { theme?: string; widget: boolean }) {
-  const { featuresValues } = useContext(StoreContext);
+  const { featuresValues, getBottomPanel } = useContext(StoreContext);
+  const [getVisibleSliderElements, setVisibleSliderElements] = createSignal([
+    getBottomPanel(),
+  ]);
   const keys = Object.keys(features);
+
+  createEffect(
+    on(
+      getBottomPanel,
+      (v, pv) => {
+        const newElts = [v];
+        if (typeof pv === "number") newElts.push(pv);
+
+        setVisibleSliderElements(newElts);
+        setTimeout(() => {
+          setVisibleSliderElements([v]);
+        }, sliderDuration);
+      },
+      { defer: true },
+    ),
+  );
 
   function getFlags() {
     return keys
@@ -60,8 +89,24 @@ export function Widget(props: { theme?: string; widget: boolean }) {
         </kbd>
       </div>
       <div class="divider"></div>
-      <div class="flex flex-row flex-wrap flex-1 justify-center gap-4">
-        <Features />
+      <div class="w-full overflow-hidden">
+        <div
+          class={`flex w-full relative transform transition-transform duration-${sliderDuration} py-1`}
+          style={{
+            "--tw-translate-x": getBottomPanel() * -100 + "%",
+          }}
+        >
+          <div class="flex-grow flex-shrink-0 basis-full">
+            <Show when={getVisibleSliderElements().includes(0)}>
+              <Presets />
+            </Show>
+          </div>
+          <div class="flex-grow flex-shrink-0 basis-full">
+            <Show when={getVisibleSliderElements().includes(1)}>
+              <Features />
+            </Show>
+          </div>
+        </div>
       </div>
     </div>
   );

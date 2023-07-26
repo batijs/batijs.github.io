@@ -1,15 +1,15 @@
 import { For, useContext } from "solid-js";
 import { FormControl } from "components/FormControl";
 import { Select } from "components/Select";
-import { StoreContext } from "components/Store";
+import { type Features, StoreContext } from "components/Store";
 
 export default function Features() {
-  const { currentFeatures, selectFeature, moveFeature } =
+  const { currentFeatures, selectFeature, moveFeature, setBottomPanel } =
     useContext(StoreContext);
 
   return (
-    <ul class="flex flex-wrap gap-4 px-4 w-full">
-      <For each={Object.keys(currentFeatures)}>
+    <div class="flex flex-wrap gap-4 px-4 box-border w-full relative">
+      <For each={Object.keys(currentFeatures) as Features[]}>
         {(ns) => {
           const f = currentFeatures[ns];
           return (
@@ -24,7 +24,7 @@ export default function Features() {
                   classList={{
                     "border-success": Boolean(f.inview),
                     "border-base-200 bg-base-200 opacity-70": Boolean(
-                      f.disabled
+                      f.disabled,
                     ),
                     "border-primary": !f.inview && !f.disabled,
                   }}
@@ -58,6 +58,13 @@ export default function Features() {
           );
         }}
       </For>
-    </ul>
+
+      <span
+        class="absolute bottom-0 right-4 link link-hover"
+        onclick={() => setBottomPanel(0)}
+      >
+        ← presets
+      </span>
+    </div>
   );
 }
