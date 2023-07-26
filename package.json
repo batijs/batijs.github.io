@@ -1,12 +1,12 @@
 {
   "name": "@batijs/elements",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "BatiJS website as Web Components",
   "type": "module",
   "scripts": {
     "dev": "hattip serve ./hattip-entry.ts --client",
     "build": "vite build",
-    "release": "pnpm run build:widget && pnpm publish",
+    "release": "bumpp && pnpm run build:widget && pnpm publish",
     "build:pages": "vite build --mode pages",
     "build:widget": "vite build --mode widget",
     "dev:widget": "vite --mode widget"
@@ -22,6 +22,7 @@
     "@hattip/vite": "^0.0.34",
     "autoprefixer": "^10.4.14",
     "babel-preset-solid": "^1.7.7",
+    "bumpp": "^9.1.1",
     "cross-fetch": "^3.1.8",
     "daisyui": "^3.5.0",
     "esbuild": "^0.18.17",
