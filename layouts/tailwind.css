@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    :root {
+        --lm: '';
+        --lm2: '';
+    }
+}
+
+@layer components {
+    .list-custom > li {
+        list-style: inside;
+    }
+
+    .list-custom > li::marker {
+        content: var(--lm) var(--lm2) " ";
+    }
+
+    li.list-colon::marker, .list-custom.list-colon > li::marker {
+        --lm2: ':';
+    }
+
+    li.list-star::marker, .list-custom.list-star > li::marker {
+        --lm: '★';
+    }
+
+    li.list-circle::marker, .list-custom.list-circle> li::marker {
+        --lm: '●';
+    }
+}
