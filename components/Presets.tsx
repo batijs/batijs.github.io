@@ -1,5 +1,6 @@
 import { useContext } from "solid-js";
 import { type Features, StoreContext } from "components/Store";
+import clsx from "clsx";
 
 function Preset(props: {
   title: string;
@@ -14,14 +15,14 @@ function Preset(props: {
   return (
     <button
       type="button"
-      class={"card card-compact border-0 bg-base-100 " + (props.class ?? "")}
+      class={clsx("card card-compact border-0 bg-base-100", props.class)}
       onclick={() => !props.disabled && selectPreset(props.features)}
       classList={{
         "cursor-default opacity-50": props.disabled,
       }}
     >
       <div class="card-body">
-        <h2 class={"card-title " + (props.titleClass ?? "")}>{props.title}</h2>
+        <h2 class={clsx("card-title", props.titleClass)}>{props.title}</h2>
         <p class="text-left">{props.description}</p>
       </div>
     </button>

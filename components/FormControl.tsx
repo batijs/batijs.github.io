@@ -1,5 +1,6 @@
 import { type JSX } from "solid-js";
 import { flip } from "./Flip";
+import clsx from "clsx";
 
 // avoid removing import when trying to optimize them
 // https://github.com/solidjs/solid/discussions/845
@@ -13,7 +14,7 @@ export function FormControl(props: {
 }) {
   return (
     <div
-      class={"form-control sm:max-w-xs " + (props.class ?? "")}
+      class={clsx("form-control sm:max-w-xs", props.class)}
       use:flip={props.flipLabel}
     >
       <label class="label">
