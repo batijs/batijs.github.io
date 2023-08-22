@@ -82,6 +82,10 @@
                 @apply border-2 border-base-content/20;
             }
 
+            & [role=option][aria-disabled=true] {
+                @apply cursor-not-allowed border-base-200 bg-base-200 opacity-20;
+            }
+
             & [role=option]:last-of-type {
                 @apply rounded-t-none rounded-b-lg;
             }
@@ -158,7 +162,8 @@
         }
         &-disabled,
         &:disabled,
-        &[disabled] {
+        &[disabled],
+        &[aria-disabled=true]{
             @apply cursor-not-allowed border-base-200 bg-base-200 text-opacity-20 placeholder-base-content placeholder-opacity-20 !outline-none;
         }
         &-multiple,

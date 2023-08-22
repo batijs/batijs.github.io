@@ -2,6 +2,7 @@
 
 import {
   createEffect,
+  createMemo,
   createSelector,
   createSignal,
   type JSX,
@@ -10,6 +11,7 @@ import {
   splitProps,
 } from "solid-js";
 import clsx from "clsx";
+import type { Feature } from "../types";
 
 // Save a list of named combobox actions, for future readability
 const SelectActions = {
@@ -179,7 +181,7 @@ function maintainScrollVisibility(
 export function ListBox(
   props: JSX.OptionHTMLAttributes<Element> & {
     disabled?: boolean;
-    options: JSX.OptionHTMLAttributes<HTMLOptionElement>[];
+    options: Feature[];
     onChange?: (value: string) => unknown;
   },
 ) {
@@ -197,6 +199,10 @@ export function ListBox(
 
   const [local, others] = splitProps(props, ["options", "class", "onChange"]);
 
+  const nonDisabledIndices = createMemo(() =>
+    props.options.map((o, i) => (o.disabled ? -1 : i)).filter((i) => i !== -1),
+  );
+
   onMount(() => {
     setSelectedIndex(0);
   });
@@ -210,8 +216,10 @@ export function ListBox(
   const isActive = createSelector(activeIndex);
 
   function onOptionClick(index: number) {
-    onOptionChange(index);
-    setSelectedIndex(index);
+    if (!props.options[index].disabled) {
+      onOptionChange(index);
+      setSelectedIndex(index);
+    }
     updateMenuState(false);
   }
 
@@ -223,7 +231,7 @@ export function ListBox(
 
   function onOptionChange(index: number) {
     // update state
-    setActiveIndex(index);
+    setActiveIndex(nonDisabledIndices()[index]);
 
     // update active option styles
     const options = selectEl.querySelectorAll("[role=option]");
@@ -277,7 +285,7 @@ export function ListBox(
   function onComboKeyDown(event: KeyboardEvent) {
     if (props.disabled) return;
     const { key } = event;
-    const max = props.options.length - 1;
+    const max = nonDisabledIndices().length - 1;
 
     const action = getActionFromKey(event, isOpen());
 
@@ -291,7 +299,13 @@ export function ListBox(
       case SelectActions.PageUp:
       case SelectActions.PageDown:
         event.preventDefault();
-        return onOptionChange(getUpdatedIndex(activeIndex(), max, action));
+        return onOptionChange(
+          getUpdatedIndex(
+            nonDisabledIndices().findIndex(isActive),
+            max,
+            action,
+          ),
+        );
       case SelectActions.CloseSelect:
         event.preventDefault();
         setSelectedIndex(activeIndex());
@@ -349,7 +363,8 @@ export function ListBox(
   return (
     <div
       {...others}
-      class={clsx("listbox", local.class, props.disabled && "listbox-disabled")}
+      aria-disabled={props.disabled}
+      class={clsx("listbox", local.class)}
       ref={selectEl}
       tabIndex={props.disabled ? -1 : 0}
       onBlur={onComboBlur}
@@ -382,6 +397,7 @@ export function ListBox(
               role="option"
               id={`listboxitem-${props.id}-${index()}`}
               aria-selected={isActive(index())}
+              aria-disabled={option.disabled}
               onClick={(e) => {
                 e.stopPropagation();
                 onOptionClick(index());
