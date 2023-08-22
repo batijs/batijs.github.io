@@ -1,16 +1,17 @@
-import { useContext } from "solid-js";
+import { children, type JSX, useContext } from "solid-js";
 import { type Features, StoreContext } from "components/Store";
 import clsx from "clsx";
 
 function Preset(props: {
   title: string;
-  description: string;
+  children: JSX.Element;
   features: Features[];
   class?: string;
   titleClass?: string;
   disabled?: boolean;
 }) {
   const { selectPreset } = useContext(StoreContext);
+  const c = children(() => props.children);
 
   return (
     <button
@@ -23,7 +24,7 @@ function Preset(props: {
     >
       <div class="card-body">
         <h2 class={clsx("card-title", props.titleClass)}>{props.title}</h2>
-        <p class="text-left">{props.description}</p>
+        <p class="text-left">{c()}</p>
       </div>
     </button>
   );
@@ -36,29 +37,30 @@ export default function Presets() {
         title="Plain Vike"
         class="hover:outline outline-amber-500 outline-1 outline-offset-2"
         titleClass="underline decoration-amber-500"
-        description="For trying out Vike, or manually assembling your stack"
         features={["framework"]}
-      />
+      >
+        For trying out <span class="font-bold">Vike</span>, or{" "}
+        <span class="font-bold">manually assembling</span> your stack
+      </Preset>
       <Preset
         title="Frontend only"
         class="hover:outline outline-sky-500 outline-1 outline-offset-2"
         titleClass="underline decoration-sky-500"
-        description="If a backend isn't needed, or a backend already exists"
         features={["framework", "uikit"]}
-      />
+      >
+        If a backend isn't needed, or a backend already exists
+      </Preset>
       <Preset
         title="Full-stack"
         class="hover:outline outline-fuchsia-700 outline-1 outline-offset-2"
         titleClass="underline decoration-fuchsia-700"
-        description="Frontend + Server + Database"
         features={["framework", "rpc", "auth", "db", "uikit", "server"]}
-      />
-      <Preset
-        title="E-commerce"
-        description="E-commerce website powered by Shopify or BigCommerce."
-        features={["framework"]}
-        disabled={true}
-      />
+      >
+        Frontend + Server + Database
+      </Preset>
+      <Preset title="E-commerce" features={["framework"]} disabled={true}>
+        E-commerce website powered by Shopify or BigCommerce.
+      </Preset>
     </div>
   );
 }
