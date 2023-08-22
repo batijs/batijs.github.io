@@ -11,10 +11,12 @@ export function FormControl(props: {
   label: string;
   flipLabel?: string;
   class?: string;
+  style?: string;
 }) {
   return (
     <div
       class={clsx("form-control sm:max-w-xs", props.class)}
+      style={props.style}
       use:flip={props.flipLabel}
     >
       <label class="label">

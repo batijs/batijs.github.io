@@ -1,11 +1,13 @@
-import { For, useContext } from "solid-js";
+import { createMemo, For, useContext } from "solid-js";
 import { FormControl } from "components/FormControl";
-import { Select } from "components/Select";
 import { type Features, StoreContext } from "components/Store";
+import { ListBox } from "components/ListBox";
 
 export default function Features() {
   const { currentFeatures, selectFeature, moveFeature, setBottomPanel } =
     useContext(StoreContext);
+
+  const keys = createMemo(() => Object.keys(currentFeatures) as Features[]);
 
   return (
     <>
@@ -17,14 +19,17 @@ export default function Features() {
           ← presets
         </span>
 
-        <For each={Object.keys(currentFeatures) as Features[]}>
-          {(ns) => {
+        <For each={keys()}>
+          {(ns, i) => {
             const f = currentFeatures[ns];
             return (
               <FormControl
                 label={f.label}
                 flipLabel={ns}
                 class="w-full sm:w-auto"
+                style={{
+                  "z-index": keys().length - i(),
+                }}
               >
                 <div class="join group w-full">
                   <div
@@ -49,16 +54,15 @@ export default function Features() {
                       onChange={() => moveFeature(ns)}
                     />
                   </div>
-                  <Select
-                    class="text-xs join-item border-l-0 pl-1 w-full"
-                    classList={{
-                      "select-primary": !f.inview,
-                      "select-success": Boolean(f.inview),
-                    }}
+                  <ListBox
+                    id={ns}
+                    class="text-xs join-item border-l-0 pl-1 sm:w-52"
                     disabled={f.disabled}
-                    onChange={(e) => {
-                      selectFeature(ns, e.target.value || undefined);
+                    classList={{
+                      "listbox-primary": !f.inview,
+                      "listbox-success": Boolean(f.inview),
                     }}
+                    onChange={(value) => selectFeature(ns, value || undefined)}
                     options={f.features}
                   />
                 </div>
@@ -67,29 +71,6 @@ export default function Features() {
           }}
         </For>
       </div>
-      {/*<div class="w-full px-4 relative mt-6 text-sm">*/}
-      {/*  <ul class="list-custom">*/}
-      {/*    <li class="list-star list-colon">*/}
-      {/*      Recommended by Bati's team. We favour tools that:*/}
-      {/*      <ul class="list-custom list-circle pl-4">*/}
-      {/*        <li>*/}
-      {/*          Respect JavaScript standards (see{" "}*/}
-      {/*          <a*/}
-      {/*            class="link"*/}
-      {/*            href="https://wintercg.org"*/}
-      {/*            referrerPolicy="no-referrer"*/}
-      {/*            target="_blank"*/}
-      {/*          >*/}
-      {/*            WinterCG*/}
-      {/*          </a>*/}
-      {/*          )*/}
-      {/*        </li>*/}
-      {/*        <li>Are simple, performant and actively maintained</li>*/}
-      {/*        <li>Are not tied to a specific framework</li>*/}
-      {/*      </ul>*/}
-      {/*    </li>*/}
-      {/*  </ul>*/}
-      {/*</div>*/}
     </>
   );
 }

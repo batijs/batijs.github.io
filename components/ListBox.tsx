@@ -4,9 +4,12 @@ import {
   createEffect,
   createSelector,
   createSignal,
+  type JSX,
   on,
   onMount,
+  splitProps,
 } from "solid-js";
+import clsx from "clsx";
 
 // Save a list of named combobox actions, for future readability
 const SelectActions = {
@@ -173,11 +176,13 @@ function maintainScrollVisibility(
   }
 }
 
-export function ListBox(props: {
-  id: string;
-  options: { text: string; value: string }[];
-  onChange?: (value: string) => unknown;
-}) {
+export function ListBox(
+  props: JSX.OptionHTMLAttributes<Element> & {
+    disabled?: boolean;
+    options: JSX.OptionHTMLAttributes<HTMLOptionElement>[];
+    onChange?: (value: string) => unknown;
+  },
+) {
   let selectEl: Element;
   let comboEl: Element;
   let listboxEl: Element;
@@ -189,6 +194,8 @@ export function ListBox(props: {
   let searchString = "";
   let searchTimeout = null;
   let ignoreBlur = false;
+
+  const [local, others] = splitProps(props, ["options", "class", "onChange"]);
 
   onMount(() => {
     setSelectedIndex(0);
@@ -263,10 +270,12 @@ export function ListBox(props: {
   }
 
   function onComboClick() {
+    if (props.disabled) return;
     updateMenuState(!isOpen());
   }
 
   function onComboKeyDown(event: KeyboardEvent) {
+    if (props.disabled) return;
     const { key } = event;
     const max = props.options.length - 1;
 
@@ -305,7 +314,7 @@ export function ListBox(props: {
     // find the index of the first matching option
     const localSearchString = getSearchString(letter);
     const searchIndex = getIndexByLetter(
-      props.options.map((o) => o.text),
+      props.options.map((o) => o.label),
       localSearchString,
       activeIndex() + 1,
     );
@@ -339,9 +348,10 @@ export function ListBox(props: {
 
   return (
     <div
-      class="listbox"
+      {...others}
+      class={clsx("listbox", local.class, props.disabled && "listbox-disabled")}
       ref={selectEl}
-      tabIndex="0"
+      tabIndex={props.disabled ? -1 : 0}
       onBlur={onComboBlur}
       onClick={onComboClick}
       onKeyDown={onComboKeyDown}
@@ -356,7 +366,7 @@ export function ListBox(props: {
         tabIndex="-1"
         ref={comboEl}
       >
-        {props.options[selectedIndex()].text}
+        {props.options[selectedIndex()].label}
       </div>
       <div
         role="listbox"
@@ -378,7 +388,7 @@ export function ListBox(props: {
               }}
               onMouseDown={onOptionMouseDown}
             >
-              {option.text}
+              {option.label}
             </div>
           )}
         </For>
