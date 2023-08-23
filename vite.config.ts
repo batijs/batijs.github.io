@@ -3,6 +3,8 @@ import { build, defineConfig, type Plugin } from "vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 import autoprefixer from "autoprefixer";
 import tailwindcss from "tailwindcss";
+// @ts-ignore
+import tailwindcssNesting from "tailwindcss/nesting";
 import daisyui from "daisyui";
 import solidPlugin from "vite-plugin-solid";
 
@@ -58,6 +60,7 @@ export default defineConfig(({ mode, command }) => {
           inject: false,
           plugins: [
             autoprefixer(),
+            tailwindcssNesting(),
             tailwindcss({
               corePlugins: {
                 preflight: false,
@@ -78,7 +81,7 @@ export default defineConfig(({ mode, command }) => {
               Rule(rule) {
                 rule.selector = rule.selector.replaceAll(
                   ":root",
-                  ".bati-widget"
+                  ".bati-widget",
                 );
               },
             },

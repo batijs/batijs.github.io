@@ -62,7 +62,7 @@
 
     /*https://github.com/saadeghi/daisyui/blob/master/src/components/styled/select.css*/
     .listbox {
-        @apply border border-base-content border-opacity-0 bg-base-100 pr-10 font-semibold rounded-btn;
+        @apply border-solid border border-base-content border-opacity-0 bg-base-100 pr-10 font-semibold rounded-btn;
         &-bordered {
             @apply border-opacity-20;
         }
@@ -79,7 +79,7 @@
             @apply bg-base-100 drop-shadow-xl rounded-t-none rounded-b-lg;
 
             & [role=option][aria-selected=true] {
-                @apply border-2 border-base-content/20;
+                @apply border-solid border-2 border-base-content/20;
             }
 
             & [role=option][aria-disabled=true] {
