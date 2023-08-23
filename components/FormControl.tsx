@@ -15,7 +15,7 @@ export function FormControl(props: {
 }) {
   return (
     <div
-      class={clsx("form-control sm:max-w-xs", props.class)}
+      class={clsx("form-control", props.class)}
       style={props.style}
       use:flip={props.flipLabel}
     >

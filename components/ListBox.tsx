@@ -5,6 +5,7 @@ import {
   createMemo,
   createSelector,
   createSignal,
+  For,
   type JSX,
   on,
   onMount,
@@ -95,7 +96,8 @@ function getIndexByLetter(options: string[], filter: string, startIndex = 0) {
     ...options.slice(0, startIndex),
   ];
   const firstMatch = filterOptions(orderedOptions, filter)[0];
-  const allSameLetter = (array) => array.every((letter) => letter === array[0]);
+  const allSameLetter = (array: string[]) =>
+    array.every((letter) => letter === array[0]);
 
   // first check if there is an exact match for the typed string
   if (firstMatch) {
@@ -141,7 +143,7 @@ function getUpdatedIndex(
 }
 
 // check if element is visible in browser view port
-function isElementInView(element: Element) {
+function isElementInView(element: HTMLElement) {
   const bounding = element.getBoundingClientRect();
 
   return (
@@ -155,15 +157,15 @@ function isElementInView(element: Element) {
 }
 
 // check if an element is currently scrollable
-function isScrollable(element: Element) {
+function isScrollable(element: HTMLElement) {
   return element && element.clientHeight < element.scrollHeight;
 }
 
 // ensure a given child element is within the parent's visible scroll area
 // if the child is not visible, scroll the parent
 function maintainScrollVisibility(
-  activeElement: Element,
-  scrollParent: Element,
+  activeElement: HTMLElement,
+  scrollParent: HTMLElement,
 ) {
   const { offsetHeight, offsetTop } = activeElement;
   const { offsetHeight: parentOffsetHeight, scrollTop } = scrollParent;
@@ -179,22 +181,25 @@ function maintainScrollVisibility(
 }
 
 export function ListBox(
-  props: JSX.OptionHTMLAttributes<Element> & {
+  props: Omit<
+    JSX.OptionHTMLAttributes<HTMLElement>,
+    "onChange" | "onchange"
+  > & {
     disabled?: boolean;
     options: Feature[];
     onChange?: (value: string) => unknown;
   },
 ) {
-  let selectEl: Element;
-  let comboEl: Element;
-  let listboxEl: Element;
+  let selectEl: HTMLDivElement;
+  let comboEl: HTMLDivElement;
+  let listboxEl: HTMLDivElement;
 
   const [activeIndex, setActiveIndex] = createSignal(0);
   const [selectedIndex, setSelectedIndex] = createSignal(0);
   const [isOpen, setIsOpen] = createSignal(false);
 
   let searchString = "";
-  let searchTimeout = null;
+  let searchTimeout: any = null;
   let ignoreBlur = false;
 
   const [local, others] = splitProps(props, ["options", "class", "onChange"]);
@@ -203,13 +208,15 @@ export function ListBox(
     props.options.map((o, i) => (o.disabled ? -1 : i)).filter((i) => i !== -1),
   );
 
+  const selectedOption = createMemo(() => props.options[selectedIndex()]);
+
   onMount(() => {
     setSelectedIndex(0);
   });
 
   createEffect(
     on(selectedIndex, (index) => {
-      props.onChange?.(props.options[index].value);
+      props.onChange?.(props.options[index].value!);
     }),
   );
 
@@ -238,11 +245,11 @@ export function ListBox(
 
     // ensure the new option is in view
     if (isScrollable(listboxEl)) {
-      maintainScrollVisibility(options[index], listboxEl);
+      maintainScrollVisibility(options[index] as HTMLElement, listboxEl);
     }
 
     // ensure the new option is visible on screen
-    if (!isElementInView(options[index])) {
+    if (!isElementInView(options[index] as HTMLElement)) {
       options[index].scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   }
@@ -365,13 +372,14 @@ export function ListBox(
       {...others}
       aria-disabled={props.disabled}
       class={clsx("listbox", local.class)}
-      ref={selectEl}
+      ref={(el) => (selectEl = el)}
       tabIndex={props.disabled ? -1 : 0}
       onBlur={onComboBlur}
       onClick={onComboClick}
       onKeyDown={onComboKeyDown}
     >
       <div
+        class="inline-flex gap-2"
         aria-controls={`listbox-${props.id}`}
         aria-expanded={isOpen()}
         aria-haspopup="listbox"
@@ -379,9 +387,16 @@ export function ListBox(
         id={`combo-${props.id}`}
         role="combobox"
         tabIndex="-1"
-        ref={comboEl}
+        ref={(el) => (comboEl = el)}
       >
-        {props.options[selectedIndex()].label}
+        {selectedOption().image && (
+          <img
+            class="max-w-5 max-h-4"
+            src={selectedOption().image}
+            alt={`${selectedOption().value} logo`}
+          />
+        )}
+        {selectedOption().label}
       </div>
       <div
         role="listbox"
@@ -389,11 +404,12 @@ export function ListBox(
         // aria-labelledby={`combo-label-${props.id}`}
         aria-activedescendant={`listboxitem-${props.id}-${activeIndex()}`}
         tabIndex="-1"
-        ref={listboxEl}
+        ref={(el) => (listboxEl = el)}
       >
         <For each={props.options}>
           {(option, index) => (
             <div
+              class="inline-flex gap-2"
               role="option"
               id={`listboxitem-${props.id}-${index()}`}
               aria-selected={isActive(index())}
@@ -404,6 +420,13 @@ export function ListBox(
               }}
               onMouseDown={onOptionMouseDown}
             >
+              {option.image && (
+                <img
+                  class="max-w-5 max-h-4"
+                  src={option.image}
+                  alt={`${option.value} logo`}
+                />
+              )}
               {option.label}
             </div>
           )}

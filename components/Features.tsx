@@ -11,9 +11,9 @@ export default function Features() {
 
   return (
     <>
-      <div class="flex flex-wrap gap-4 px-4 box-border w-full relative">
+      <div class="grid grid-cols-[repeat(auto-fit,_minmax(14rem,_1fr))] gap-4 px-4 box-border w-full relative guy">
         <span
-          class="absolute -top-2 right-4 link link-hover opacity-80 hover:opacity-100"
+          class="absolute -top-2 right-4 link link-hover opacity-80 hover:opacity-100 z-30"
           onClick={() => setBottomPanel(0)}
         >
           ← presets
@@ -27,6 +27,7 @@ export default function Features() {
                 label={f.label}
                 flipLabel={ns}
                 class="w-full sm:w-auto"
+                // @ts-ignore
                 style={{
                   "z-index": keys().length - i(),
                 }}
@@ -56,7 +57,7 @@ export default function Features() {
                   </div>
                   <ListBox
                     id={ns}
-                    class="text-xs join-item border-l-0 pl-1 sm:w-52"
+                    class="text-xs join-item border-l-0 pl-1 w-full"
                     disabled={f.disabled}
                     classList={{
                       "listbox-primary": !f.inview,

@@ -1,5 +1,4 @@
 import { createStore } from "solid-js/store";
-import type { Definition } from "../pages/index/types";
 import features from "assets/features.json";
 import {
   batch,
@@ -8,6 +7,7 @@ import {
   createSignal,
   type JSX,
 } from "solid-js";
+import type { Definition } from "../types";
 
 export type Features = keyof typeof features;
 

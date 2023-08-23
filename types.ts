@@ -10,4 +10,5 @@ export interface Feature {
   value?: string;
   selected?: boolean;
   disabled?: boolean;
+  image?: string;
 }

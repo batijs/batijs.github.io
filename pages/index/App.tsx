@@ -4,7 +4,7 @@ import { Widget } from "components/Widget";
 export default function App() {
   return (
     <>
-      <div class="mt-8">
+      <div class="mt-8 pb-16">
         <div class="w-full items-center flex justify-center gap-8">
           <a class="inline-block" href="/">
             <Logo size={96} />
@@ -45,7 +45,7 @@ export default function App() {
           </svg>
         </a>
       </div>
-      <footer class="footer footer-center p-4 bg-base-200 text-base-content fixed bottom-0">
+      <footer class="footer footer-center p-4 bg-base-200 text-base-content fixed bottom-0 z-10">
         <div class="flex">
           <a
             href="https://www.flaticon.com/free-icons/wall"
