@@ -7,6 +7,7 @@
     "dev": "hattip serve ./hattip-entry.ts --client",
     "build": "vite build",
     "release": "bumpp && pnpm run build:widget && pnpm publish",
+    "check-types": "tsc --noEmit",
     "build:pages": "vite build --mode pages",
     "build:widget": "vite build --mode widget",
     "dev:widget": "vite --mode widget"

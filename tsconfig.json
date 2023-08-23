@@ -29,5 +29,6 @@
       "assets/*": ["./assets/*"],
       "layouts/*": ["./layouts/*"]
     }
-  }
+  },
+  "exclude": ["./dist"]
 }

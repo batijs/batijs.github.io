@@ -1,4 +1,4 @@
-import { createMemo, useContext } from "solid-js";
+import { createMemo, Match, Switch, useContext } from "solid-js";
 import Features from "components/Features";
 import { StoreContext } from "components/Store";
 import features from "assets/features.json";
