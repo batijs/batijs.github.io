@@ -7,6 +7,7 @@ export interface Definition {
 
 export interface Feature {
   label: string;
+  alt?: string;
   value?: string;
   selected?: boolean;
   disabled?: boolean;

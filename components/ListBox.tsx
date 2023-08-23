@@ -427,7 +427,10 @@ export function ListBox(
                   alt={`${option.value} logo`}
                 />
               )}
-              {option.label}
+              <div class="inline-flex flex-col gap-0 leading-5">
+                <span>{option.label}</span>
+                {option.alt && <span class="text-xs">{option.alt}</span>}
+              </div>
             </div>
           )}
         </For>
