@@ -57,7 +57,7 @@ export default function Features() {
                   </div>
                   <ListBox
                     id={ns}
-                    class="text-xs join-item border-l-0 pl-1 w-full"
+                    class="join-item border-l-0 pl-1 w-full"
                     disabled={f.disabled}
                     classList={{
                       "listbox-primary": !f.inview,

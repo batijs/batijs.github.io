@@ -379,7 +379,7 @@ export function ListBox(
       onKeyDown={onComboKeyDown}
     >
       <div
-        class="inline-flex gap-2"
+        class="inline-flex gap-2 items-center"
         aria-controls={`listbox-${props.id}`}
         aria-expanded={isOpen()}
         aria-haspopup="listbox"
@@ -391,7 +391,7 @@ export function ListBox(
       >
         {selectedOption().image && (
           <img
-            class="max-w-5 max-h-4"
+            class="max-w-5 max-h-5"
             src={selectedOption().image}
             alt={`${selectedOption().value} logo`}
           />
@@ -409,7 +409,7 @@ export function ListBox(
         <For each={props.options}>
           {(option, index) => (
             <div
-              class="inline-flex gap-2"
+              class="inline-flex gap-2 items-center"
               role="option"
               id={`listboxitem-${props.id}-${index()}`}
               aria-selected={isActive(index())}
@@ -422,7 +422,7 @@ export function ListBox(
             >
               {option.image && (
                 <img
-                  class="max-w-5 max-h-4"
+                  class="max-w-5 max-h-5"
                   src={option.image}
                   alt={`${option.value} logo`}
                 />
