@@ -34,13 +34,13 @@ export default function Features() {
               >
                 <div class="join group w-full">
                   <div
-                    class="join-item flex justify-center items-center px-2 border border-solid bg-base-100"
+                    class="join-item flex justify-center items-center px-2 border-2 border-r-0 border-solid bg-base-100"
                     classList={{
-                      "border-success": Boolean(f.inview),
+                      "border-success/60": Boolean(f.inview),
                       "border-base-200 bg-base-200 opacity-70": Boolean(
                         f.disabled,
                       ),
-                      "border-primary": !f.inview && !f.disabled,
+                      "border-primary/60": !f.inview && !f.disabled,
                     }}
                   >
                     <input

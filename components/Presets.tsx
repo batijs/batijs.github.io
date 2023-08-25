@@ -35,7 +35,7 @@ export default function Presets() {
     <div class="w-full px-4 box-border grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
       <Preset
         title="Plain Vike"
-        class="hover:outline outline-amber-500 outline-1 outline-offset-2"
+        class="hover:outline outline-amber-500/60 outline-2 outline-offset-2"
         titleClass="underline decoration-amber-500"
         features={["framework"]}
       >
@@ -44,7 +44,7 @@ export default function Presets() {
       </Preset>
       <Preset
         title="Frontend only"
-        class="hover:outline outline-sky-500 outline-1 outline-offset-2"
+        class="hover:outline outline-sky-500/60 outline-2 outline-offset-2"
         titleClass="underline decoration-sky-500"
         features={["framework", "uikit"]}
       >
@@ -52,7 +52,7 @@ export default function Presets() {
       </Preset>
       <Preset
         title="Full-stack"
-        class="hover:outline outline-fuchsia-700 outline-1 outline-offset-2"
+        class="hover:outline outline-fuchsia-700/60 outline-2 outline-offset-2"
         titleClass="underline decoration-fuchsia-700"
         features={["framework", "rpc", "auth", "db", "uikit", "server"]}
       >

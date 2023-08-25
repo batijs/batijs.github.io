@@ -48,7 +48,7 @@
         }
 
         & [role=listbox] {
-            @apply absolute top-full left-0 w-full overflow-y-auto z-50;
+            @apply absolute top-full left-0 w-full overflow-visible z-50;
         }
 
         & [role=combobox]:not([aria-expanded=true]) ~ [role=listbox] {
@@ -62,7 +62,7 @@
 
     /*https://github.com/saadeghi/daisyui/blob/master/src/components/styled/select.css*/
     .listbox {
-        @apply border-solid border border-base-content border-opacity-0 bg-base-100 pr-10 font-semibold rounded-btn;
+        @apply border-solid border-2 border-base-content border-opacity-0 bg-base-100 pr-10 font-semibold rounded-btn;
         &-bordered {
             @apply border-opacity-20;
         }
@@ -76,18 +76,21 @@
         }
 
         & [role=listbox] {
-            @apply bg-base-100 drop-shadow-xl rounded-t-none rounded-b-lg;
+            @apply bg-base-100 shadow-md shadow-base-300 rounded;
 
             & [role=option][aria-selected=true] {
-                @apply border-solid border-2 border-base-content/20;
+                @apply rounded border-solid border-2 border-base-content/20;
             }
 
             & [role=option][aria-disabled=true] {
                 @apply cursor-not-allowed border-base-200 bg-base-200 opacity-20;
             }
 
+            & [role=option]:first-of-type {
+                @apply rounded-t;
+            }
             & [role=option]:last-of-type {
-                @apply rounded-t-none rounded-b-lg;
+                @apply rounded-b;
             }
         }
 
@@ -98,66 +101,87 @@
             }
         }
         &-primary {
-            @apply border-primary;
+            @apply border-primary/60;
             &:focus {
                 @apply outline-primary;
             }
             & [role=listbox] [role=option][aria-selected=true] {
-                @apply border-primary;
+                @apply border-primary/60 bg-primary/10;
+            }
+            & [role=listbox] [role=option]:hover {
+                @apply bg-primary/10;
             }
         }
         &-secondary {
-            @apply border-secondary;
+            @apply border-secondary/60;
             &:focus {
                 @apply outline-secondary;
             }
             & [role=listbox] [role=option][aria-selected=true] {
-                @apply border-secondary;
+                @apply border-secondary/60 bg-secondary/10;
+            }
+            & [role=listbox] [role=option]:hover {
+                @apply bg-secondary/10;
             }
         }
         &-accent {
-            @apply border-accent;
+            @apply border-accent/60;
             &:focus {
                 @apply outline-accent;
             }
             & [role=listbox] [role=option][aria-selected=true] {
-                @apply border-accent;
+                @apply border-accent/60 bg-accent/10;
+            }
+            & [role=listbox] [role=option]:hover {
+                @apply bg-accent/10;
             }
         }
         &-info {
-            @apply border-info;
+            @apply border-info/60;
             &:focus {
                 @apply outline-info;
             }
             & [role=listbox] [role=option][aria-selected=true] {
-                @apply border-info;
+                @apply border-info/60 bg-info/10;
+            }
+            & [role=listbox] [role=option]:hover {
+                @apply bg-info/10;
             }
         }
         &-success {
-            @apply border-success;
+            @apply border-success/60;
             &:focus {
                 @apply outline-success;
             }
             & [role=listbox] [role=option][aria-selected=true] {
-                @apply border-success;
+                @apply border-success/60 bg-success/10;
+            }
+            & [role=listbox] [role=option]:hover {
+                @apply bg-success/10;
             }
         }
         &-warning {
-            @apply border-warning;
+            @apply border-warning/60;
             &:focus {
                 @apply outline-warning;
             }
             & [role=listbox] [role=option][aria-selected=true] {
-                @apply border-warning;
+                @apply border-warning/60 bg-warning/10;
+            }
+            & [role=listbox] [role=option]:hover {
+                @apply bg-warning/10;
             }
         }
         &-error {
-            @apply border-error;
+            @apply border-error/60;
             &:focus {
                 @apply outline-error;
             }
             & [role=listbox] [role=option][aria-selected=true] {
-                @apply border-error;
+                @apply border-error/60 bg-error/10;
+            }
+            & [role=listbox] [role=option]:hover {
+                @apply bg-error/10;
             }
         }
         &-disabled,
