@@ -1,5 +1,5 @@
 ---
-title: 'features update detected'
+title: '@batijs/core update detected'
 assignees: 'magne4000'
 labels: features
 ---

@@ -1,5 +1,8 @@
 name: Check features
 
+permissions:
+  issues: write
+
 on:
   workflow_dispatch:
 
