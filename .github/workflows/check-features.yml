@@ -49,3 +49,5 @@ jobs:
     - name: Close issue
       if: steps.check-features.outputs.missing == 0
       run: gh issue list --json number,title --jq '.[] | select(.title == "@batijs/core update detected") | .number' | xargs gh issue close
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
