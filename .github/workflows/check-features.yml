@@ -1,0 +1,41 @@
+name: Check features
+
+on:
+  schedule:
+    - cron: '34 4 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'pnpm'
+    - run: pnpm install --frozen-lockfile
+    - run: pnpm run script:check-features
+      id: check-features
+    - name: Output
+      env:
+        MISSING_NSS: ${{steps.check-features.outputs.missingNss}}
+        MISSING_FEATURES: ${{steps.check-features.outputs.missingFeatures}}
+      run: echo "MISSING_NSS $MISSING_NSS MISSING_FEATURES $MISSING_FEATURES"
+#    - name: Create or update issue
+#      uses: JasonEtco/create-an-issue@v2
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      with:
+#        filename: .github/ISSUE_TEMPLATE_ACTION.md
+#        update_existing: true
+#        search_existing: open
