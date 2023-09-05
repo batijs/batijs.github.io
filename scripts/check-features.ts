@@ -21,13 +21,11 @@ function checkFeatures(): State {
   for (const feature of features) {
     const [ns, v] = feature.split(":");
 
-    // if (!nss.has(ns)) {
-    if (nss.has(ns)) {
+    if (!nss.has(ns)) {
       state.missingNss.add(ns);
     }
     if (
-      // !featuresWeb[ns as keyof typeof featuresWeb].features.some(
-      featuresWeb[ns as keyof typeof featuresWeb].features.some(
+      !featuresWeb[ns as keyof typeof featuresWeb].features.some(
         (f) => f.value === v,
       )
     ) {
