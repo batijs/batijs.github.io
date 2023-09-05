@@ -5,7 +5,7 @@ import { setOutput } from "@actions/core";
 const nss = new Set(Object.keys(featuresWeb));
 
 interface State {
-  missingNss: string[];
+  missingNss: Set<string>;
   missingFeatures: {
     ns: string;
     value: string;
@@ -14,7 +14,7 @@ interface State {
 
 function checkFeatures(): State {
   const state: State = {
-    missingNss: [],
+    missingNss: new Set(),
     missingFeatures: [],
   };
 
@@ -23,7 +23,7 @@ function checkFeatures(): State {
 
     // if (!nss.has(ns)) {
     if (nss.has(ns)) {
-      state.missingNss.push(ns);
+      state.missingNss.add(ns);
     }
     if (
       // !featuresWeb[ns as keyof typeof featuresWeb].features.some(
@@ -45,9 +45,9 @@ function main() {
   const state = checkFeatures();
   let text = "";
 
-  if (state.missingNss.length > 0) {
+  if (state.missingNss.size > 0) {
     text += "New namespaces:";
-    text += "\n- " + state.missingNss.join("\n- ");
+    text += "\n- " + Array.from(state.missingNss).join("\n- ");
     text += "\n\n";
   }
 
@@ -61,7 +61,7 @@ function main() {
     text += "\n\n";
   }
 
-  setOutput("missing", state.missingNss.length + state.missingFeatures.length);
+  setOutput("missing", state.missingNss.size + state.missingFeatures.length);
   setOutput("text", text);
 }
 
