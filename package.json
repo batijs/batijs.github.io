@@ -10,7 +10,8 @@
     "check-types": "tsc --noEmit",
     "build:pages": "vite build --mode pages",
     "build:widget": "vite build --mode widget",
-    "dev:widget": "vite --mode widget"
+    "dev:widget": "vite --mode widget",
+    "script:check-features": "jiti scripts/check-features.ts"
   },
   "keywords": [
     "bati",
@@ -18,6 +19,8 @@
   ],
   "author": "Joël Charles",
   "devDependencies": {
+    "@actions/core": "^1.10.0",
+    "@batijs/core": "latest",
     "@hattip/adapter-node": "^0.0.34",
     "@hattip/router": "^0.0.34",
     "@hattip/vite": "^0.0.34",
@@ -29,6 +32,7 @@
     "daisyui": "^3.6.3",
     "esbuild": "^0.18.20",
     "hattip": "^0.0.33",
+    "jiti": "^1.19.3",
     "postcss": "^8.4.28",
     "solid-element": "^1.7.1",
     "solid-js": "^1.7.11",
