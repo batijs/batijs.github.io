@@ -25,14 +25,14 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-    - run: pnpm install --frozen-lockfile
+    - run: pnpm install --no-frozen-lockfile
     - run: pnpm run script:check-features
       id: check-features
     - name: Output
       env:
-        MISSING_NSS: ${{steps.check-features.outputs.missingNss}}
-        MISSING_FEATURES: ${{steps.check-features.outputs.missingFeatures}}
-      run: echo "MISSING_NSS $MISSING_NSS MISSING_FEATURES $MISSING_FEATURES"
+        MISSING: ${{steps.check-features.outputs.missing}}
+        TEXT: ${{steps.check-features.outputs.text}}
+      run: echo "missing $MISSING TEXT $TEXT"
 #    - name: Create or update issue
 #      uses: JasonEtco/create-an-issue@v2
 #      env:

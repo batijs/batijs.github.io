@@ -21,10 +21,12 @@ function checkFeatures(): State {
   for (const feature of features) {
     const [ns, v] = feature.split(":");
 
-    if (!nss.has(ns)) {
+    // if (!nss.has(ns)) {
+    if (nss.has(ns)) {
       state.missingNss.push(ns);
     } else if (
-      !featuresWeb[ns as keyof typeof featuresWeb].features.some(
+      // !featuresWeb[ns as keyof typeof featuresWeb].features.some(
+      featuresWeb[ns as keyof typeof featuresWeb].features.some(
         (f) => f.value === v,
       )
     ) {
@@ -40,9 +42,24 @@ function checkFeatures(): State {
 
 function main() {
   const state = checkFeatures();
+  let text = "";
 
-  setOutput("missingNss", JSON.stringify(state.missingNss));
-  setOutput("missingFeatures", JSON.stringify(state.missingFeatures));
+  if (state.missingNss.length > 0) {
+    text += "New namespaces:";
+    text += "\n- " + state.missingNss.join("\n- ");
+  }
+
+  if (state.missingFeatures.length > 0) {
+    text += "New features:";
+    text +=
+      "\n- " +
+      state.missingFeatures
+        .map(({ ns, value }) => `${ns}:${value}`)
+        .join("\n- ");
+  }
+
+  setOutput("missing", state.missingNss.length + state.missingFeatures.length);
+  setOutput("text", text);
 }
 
 main();

@@ -1,6 +1,9 @@
 ---
-title: Someone just pushed
-assignees: JasonEtco, matchai
-labels: bug, enhancement
+title: @batijs/core update detected
+assignees: magne4000
+labels: features
 ---
-Someone just pushed, oh no! Here's who did it: {{ payload.sender.login }}.
+
+`@batijs/core` features mismatch detected:
+
+{{ env.TEXT }}
