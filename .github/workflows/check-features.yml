@@ -1,6 +1,8 @@
 name: Check features
 
 on:
+  workflow_dispatch:
+
   schedule:
     - cron: '34 4 * * *'
 
