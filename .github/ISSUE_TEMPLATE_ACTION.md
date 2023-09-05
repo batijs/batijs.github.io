@@ -1,6 +1,6 @@
 ---
-title: "@batijs/core update detected"
-assignees: magne4000
+title: 'features update detected'
+assignees: 'magne4000'
 labels: features
 ---
 
