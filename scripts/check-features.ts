@@ -24,7 +24,8 @@ function checkFeatures(): State {
     // if (!nss.has(ns)) {
     if (nss.has(ns)) {
       state.missingNss.push(ns);
-    } else if (
+    }
+    if (
       // !featuresWeb[ns as keyof typeof featuresWeb].features.some(
       featuresWeb[ns as keyof typeof featuresWeb].features.some(
         (f) => f.value === v,
@@ -47,6 +48,7 @@ function main() {
   if (state.missingNss.length > 0) {
     text += "New namespaces:";
     text += "\n- " + state.missingNss.join("\n- ");
+    text += "\n\n";
   }
 
   if (state.missingFeatures.length > 0) {
@@ -56,6 +58,7 @@ function main() {
       state.missingFeatures
         .map(({ ns, value }) => `${ns}:${value}`)
         .join("\n- ");
+    text += "\n\n";
   }
 
   setOutput("missing", state.missingNss.length + state.missingFeatures.length);
