@@ -28,7 +28,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-    - run: pnpm install --no-frozen-lockfile
+    - run: pnpm install --no-frozen-lockfile --no-lockfile
     - run: pnpm run script:check-features
       id: check-features
     - name: Details

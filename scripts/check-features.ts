@@ -1,6 +1,7 @@
 import { features } from "@batijs/core";
 import featuresWeb from "../assets/features.json" assert { type: "json" };
 import { setOutput } from "@actions/core";
+import type { Feature } from "../types";
 
 const nss = new Set(Object.keys(featuresWeb));
 
@@ -9,6 +10,7 @@ interface State {
   missingFeatures: {
     ns: string;
     value: string;
+    disabled: boolean;
   }[];
 }
 
@@ -24,14 +26,15 @@ function checkFeatures(): State {
     if (!nss.has(ns)) {
       state.missingNss.add(ns);
     }
-    if (
-      !featuresWeb[ns as keyof typeof featuresWeb].features.some(
-        (f) => f.value === v,
-      )
-    ) {
+
+    const foundFeature: Feature | undefined = featuresWeb[
+      ns as keyof typeof featuresWeb
+    ].features.find((f) => f.value === v);
+    if (!foundFeature || (foundFeature && foundFeature.disabled)) {
       state.missingFeatures.push({
         ns,
         value: v,
+        disabled: Boolean(foundFeature?.disabled),
       });
     }
   }
@@ -54,7 +57,10 @@ function main() {
     text +=
       "\n- " +
       state.missingFeatures
-        .map(({ ns, value }) => `${ns}:${value}`)
+        .map(
+          ({ ns, value, disabled }) =>
+            `${ns}:${value}${disabled ? " (disabled)" : ""}`,
+        )
         .join("\n- ");
     text += "\n\n";
   }
