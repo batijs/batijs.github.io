@@ -10,7 +10,7 @@ devDependencies:
     version: 1.10.0
   '@batijs/core':
     specifier: latest
-    version: 0.0.68
+    version: 0.0.70
   '@hattip/adapter-node':
     specifier: ^0.0.34
     version: 0.0.34
@@ -429,8 +429,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@batijs/core@0.0.68:
-    resolution: {integrity: sha512-sjzNqveZixqS9LbtAN3xMY6djUJQ737Gm7kU+RCylreHZdChPkws3HxUuhzJCDq29mXaomvoYaSfFenowZSJSQ==}
+  /@batijs/core@0.0.70:
+    resolution: {integrity: sha512-JFTyvL0OnRGlfnRY01g5uOHPv1sZXGQ1I4VFriJCmKXLWxwD4t7/uVxHdtYJ/ctq5D9UwQA/cK9mCKoMsvAhVg==}
     dev: true
 
   /@brillout/import@0.2.3:
