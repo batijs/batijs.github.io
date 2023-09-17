@@ -139,19 +139,13 @@
     ]
   },
   "hosting": {
-    "disabled": true,
     "label": "Hosting",
     "features": [
-      {
-        "label": "Coming Soon",
-        "selected": true
-      },
       {
         "label": "Vercel",
         "value": "vercel",
         "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxLjE2ZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjU2IDIyMiI+PHBhdGggZD0ibTEyOCAwbDEyOCAyMjEuNzA1SDB6Ii8+PC9zdmc+",
-        "disabled": true,
-        "alt": "Coming Soon"
+        "selected": true
       },
       {
         "label": "Netlify",
