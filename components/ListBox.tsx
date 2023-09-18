@@ -381,7 +381,7 @@ export function ListBox(
       <div
         class="inline-flex gap-2 items-center"
         aria-controls={`listbox-${props.id}`}
-        aria-expanded={isOpen()}
+        aria-expanded={true}
         aria-haspopup="listbox"
         // aria-labelledby={`combo-label-${props.id}`}
         id={`combo-${props.id}`}
