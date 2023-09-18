@@ -1,7 +1,7 @@
 import { createMemo, For, useContext } from "solid-js";
-import { FormControl } from "components/FormControl";
-import { type Features, StoreContext } from "components/Store";
-import { ListBox } from "components/ListBox";
+import { FormControl } from "#components/FormControl";
+import { type Features, StoreContext } from "#components/Store";
+import { ListBox } from "#components/ListBox";
 
 export default function Features() {
   const { currentFeatures, selectFeature, moveFeature, setBottomPanel } =

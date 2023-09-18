@@ -1,5 +1,5 @@
 import { children, type JSX, useContext } from "solid-js";
-import { type Features, StoreContext } from "components/Store";
+import { type Features, StoreContext } from "#components/Store";
 import clsx from "clsx";
 
 function Preset(props: {

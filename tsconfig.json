@@ -25,9 +25,9 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "paths": {
-      "components/*": ["./components/*"],
-      "assets/*": ["./assets/*"],
-      "layouts/*": ["./layouts/*"]
+      "#components/*": ["./components/*"],
+      "#assets/*": ["./assets/*"],
+      "#layouts/*": ["./layouts/*"]
     }
   },
   "exclude": ["./dist"]

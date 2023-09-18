@@ -1,10 +1,10 @@
-import { createMemo, Match, Switch, useContext } from "solid-js";
-import Features from "components/Features";
-import { StoreContext } from "components/Store";
-import features from "assets/features.json";
-import { copy } from "components/Copy";
-import { flip } from "components/Flip";
-import Presets from "components/Presets";
+import { createMemo, useContext } from "solid-js";
+import Features from "#components/Features";
+import { StoreContext } from "#components/Store";
+import features from "../assets/features.json";
+import { copy } from "#components/Copy";
+import { flip } from "#components/Flip";
+import Presets from "#components/Presets";
 
 // avoid removing import when trying to optimize them
 // https://github.com/solidjs/solid/discussions/845
@@ -61,15 +61,9 @@ export function Widget(props: { theme?: string; widget: boolean }) {
         </kbd>
       </div>
       <div class="divider"></div>
-      <div class="w-full flex relative py-1">
-        <Switch>
-          <Match when={getBottomPanel() === 0}>
-            <Presets />
-          </Match>
-          <Match when={getBottomPanel() === 1}>
-            <Features />
-          </Match>
-        </Switch>
+      <div class="w-full flex flex-col relative py-1">
+        <Presets />
+        <Features />
       </div>
     </div>
   );

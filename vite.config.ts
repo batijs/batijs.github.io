@@ -1,12 +1,12 @@
 import solid from "vike-solid/vite";
 import { build, defineConfig, type Plugin } from "vite";
-import tsConfigPaths from "vite-tsconfig-paths";
 import autoprefixer from "autoprefixer";
 import tailwindcss from "tailwindcss";
 // @ts-ignore
 import tailwindcssNesting from "tailwindcss/nesting";
 import daisyui from "daisyui";
 import solidPlugin from "vite-plugin-solid";
+import { resolve } from "node:path";
 
 const writeToDisk: () => Plugin = () => {
   let building = false;
@@ -32,8 +32,17 @@ const writeToDisk: () => Plugin = () => {
 };
 
 export default defineConfig(({ mode, command }) => {
+  const alias = {
+    "#components": resolve(__dirname, "components"),
+    "#assets": resolve(__dirname, "assets"),
+    "#layouts": resolve(__dirname, "layouts"),
+  };
+
   if (mode === "widget") {
     return {
+      resolve: {
+        alias,
+      },
       build: {
         lib: {
           entry: "pages/index/Index.element.ts",
@@ -88,17 +97,15 @@ export default defineConfig(({ mode, command }) => {
           ],
         },
       },
-      plugins: [
-        tsConfigPaths(),
-        solidPlugin(),
-        command === "serve" ? writeToDisk() : undefined,
-      ],
+      plugins: [solidPlugin(), command === "serve" ? writeToDisk() : undefined],
     };
   }
 
   return {
+    resolve: {
+      alias,
+    },
     plugins: [
-      tsConfigPaths(),
       solid({
         vps: {
           prerender: true,

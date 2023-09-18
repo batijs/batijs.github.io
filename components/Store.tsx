@@ -1,5 +1,5 @@
 import { createStore } from "solid-js/store";
-import features from "assets/features.json";
+import features from "../assets/features.json";
 import {
   batch,
   createContext,
