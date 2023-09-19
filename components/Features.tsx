@@ -77,17 +77,6 @@ export default function Features() {
                       </label>
                     )}
                   </For>
-                  {/*<ListBox*/}
-                  {/*  id={ns}*/}
-                  {/*  class="join-item border-l-0 pl-1 w-full"*/}
-                  {/*  disabled={f.disabled}*/}
-                  {/*  classList={{*/}
-                  {/*    "listbox-primary": !f.inview,*/}
-                  {/*    "listbox-success": Boolean(f.inview),*/}
-                  {/*  }}*/}
-                  {/*  onChange={(value) => selectFeature(ns, value || undefined)}*/}
-                  {/*  options={f.features}*/}
-                  {/*/>*/}
                 </div>
               </FormControl>
             );
