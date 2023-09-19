@@ -1,31 +1,31 @@
 {
   "LayoutDefault.css": {
-    "file": "assets/static/LayoutDefault.f943191c.css",
+    "file": "assets/static/LayoutDefault.b77cc984.css",
     "src": "LayoutDefault.css"
   },
-  "_chunk-0e8da362.js": {
+  "_chunk-fa9d5433.js": {
     "css": [
-      "assets/static/LayoutDefault.f943191c.css"
+      "assets/static/LayoutDefault.b77cc984.css"
     ],
-    "file": "assets/chunks/chunk-0e8da362.js"
+    "file": "assets/chunks/chunk-fa9d5433.js"
   },
   "assets/logo.svg": {
     "file": "assets/static/logo.059a8ea3.svg",
     "src": "assets/logo.svg"
   },
-  "node_modules/.pnpm/vite-plugin-ssr@0.4.138_vite@4.4.9/node_modules/vite-plugin-ssr/dist/esm/client/client-routing-runtime/entry.js": {
+  "node_modules/.pnpm/vite-plugin-ssr@0.4.141_vite@4.4.9/node_modules/vite-plugin-ssr/dist/esm/client/client-routing-runtime/entry.js": {
     "dynamicImports": [
       "virtual:vite-plugin-ssr:importPageCode:client:/pages/_error",
       "virtual:vite-plugin-ssr:importPageCode:client:/pages/index"
     ],
-    "file": "assets/entries/entry-client-routing.818d9994.js",
+    "file": "assets/entries/entry-client-routing.c50d95d4.js",
     "isEntry": true,
-    "src": "node_modules/.pnpm/vite-plugin-ssr@0.4.138_vite@4.4.9/node_modules/vite-plugin-ssr/dist/esm/client/client-routing-runtime/entry.js"
+    "src": "node_modules/.pnpm/vite-plugin-ssr@0.4.141_vite@4.4.9/node_modules/vite-plugin-ssr/dist/esm/client/client-routing-runtime/entry.js"
   },
   "virtual:vite-plugin-ssr:importPageCode:client:/pages/_error": {
-    "file": "assets/entries/pages_error.cb738972.js",
+    "file": "assets/entries/pages_error.d1d15a93.js",
     "imports": [
-      "_chunk-0e8da362.js"
+      "_chunk-fa9d5433.js"
     ],
     "isDynamicEntry": true,
     "isEntry": true,
@@ -35,9 +35,9 @@
     "assets": [
       "assets/static/logo.059a8ea3.svg"
     ],
-    "file": "assets/entries/pages_index.7b7bddc7.js",
+    "file": "assets/entries/pages_index.591f6f6d.js",
     "imports": [
-      "_chunk-0e8da362.js"
+      "_chunk-fa9d5433.js"
     ],
     "isDynamicEntry": true,
     "isEntry": true,
