@@ -3,21 +3,14 @@ import { FormControl } from "#components/FormControl";
 import { type Features, StoreContext } from "#components/Store";
 
 export default function Features() {
-  const { currentFeatures, selectFeature, moveFeature, setBottomPanel } =
+  const { currentFeatures, selectFeature, moveFeature } =
     useContext(StoreContext);
 
   const keys = createMemo(() => Object.keys(currentFeatures) as Features[]);
 
   return (
     <>
-      <div class="grid grid-cols-[repeat(auto-fit,_minmax(14rem,_1fr))] gap-4 px-4 box-border w-full relative guy">
-        <span
-          class="absolute -top-2 right-4 link link-hover opacity-80 hover:opacity-100 z-30"
-          onClick={() => setBottomPanel(0)}
-        >
-          ← presets
-        </span>
-
+      <div class="grid grid-cols-[repeat(auto-fit,_minmax(14rem,_1fr))] gap-4 box-border w-full relative guy">
         <For each={keys()}>
           {(ns, i) => {
             const f = currentFeatures[ns];
@@ -25,7 +18,7 @@ export default function Features() {
               <FormControl
                 label={f.label}
                 flipLabel={ns}
-                class="w-full sm:w-auto border-solid border-2 rounded-md bg-base-200"
+                class="w-full sm:w-auto border-solid border-l-2 rounded-md bg-base-100"
                 classList={{
                   "border-success/60": Boolean(f.inview),
                   "border-base-200 opacity-70": Boolean(f.disabled),

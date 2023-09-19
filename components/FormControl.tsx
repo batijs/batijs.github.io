@@ -21,7 +21,7 @@ export function FormControl(props: {
       classList={props.classList}
       use:flip={props.flipLabel}
     >
-      <legend class="label ml-1">{props.label}</legend>
+      <legend class="label text-lg font-bold ml-1">{props.label}</legend>
       {props.children}
     </fieldset>
   );
