@@ -1,5 +1,5 @@
-import { Logo } from "components/Logo";
-import { Widget } from "components/Widget";
+import { Logo } from "#components/Logo";
+import { Widget } from "#components/Widget";
 
 export default function App() {
   return (

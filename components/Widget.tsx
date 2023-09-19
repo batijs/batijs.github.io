@@ -1,10 +1,11 @@
-import { createMemo, Match, Switch, useContext } from "solid-js";
-import Features from "components/Features";
-import { StoreContext } from "components/Store";
-import features from "assets/features.json";
-import { copy } from "components/Copy";
-import { flip } from "components/Flip";
-import Presets from "components/Presets";
+import { createMemo, useContext } from "solid-js";
+import Features from "#components/Features";
+import { StoreContext } from "#components/Store";
+import features from "../assets/features.json";
+import { copy } from "#components/Copy";
+import { flip } from "#components/Flip";
+import Presets from "#components/Presets";
+import Description from "#components/Description";
 
 // avoid removing import when trying to optimize them
 // https://github.com/solidjs/solid/discussions/845
@@ -12,7 +13,7 @@ const _copy = copy;
 const _flip = flip;
 
 export function Widget(props: { theme?: string; widget: boolean }) {
-  const { featuresValues, getBottomPanel } = useContext(StoreContext);
+  const { featuresValues } = useContext(StoreContext);
   const keys = Object.keys(features);
 
   function getFlags() {
@@ -32,14 +33,17 @@ export function Widget(props: { theme?: string; widget: boolean }) {
   return (
     <div
       data-theme={props.theme}
-      class="flex flex-col bg-base-300 px-4 py-8 rounded-xl shadow-2xl font-sans bati-widget"
+      class="flex flex-col bg-base-300 p-6 rounded-xl shadow-2xl font-sans bati-widget"
       classList={{
         "w-4/5": !props.widget,
       }}
     >
-      <div class="px-4 flex">
+      <div class="mb-2 w-full">
+        <Description />
+      </div>
+      <div class="flex px-4">
         <kbd
-          class="group relative flex-1 justify-start pl-10 tooltip-primary text-left inline-flex tooltip-bottom kbd kbd-lg select-all flex-wrap leading-10 gap-2.5"
+          class="group relative flex-1 justify-start pl-9 tooltip-primary text-left inline-flex tooltip-bottom kbd kbd-sm select-all flex-wrap rounded-md leading-9 gap-2.5"
           use:copy
           data-tip="Copied to clipboard!"
         >
@@ -53,23 +57,22 @@ export function Widget(props: { theme?: string; widget: boolean }) {
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="lucide lucide-chevron-right absolute top-2.5 left-2.5 opacity-50"
+            class="lucide lucide-terminal absolute top-2 left-2 opacity-40 h-5"
           >
-            <polyline points="9 18 15 12 9 6" />
+            <polyline points="4 17 10 11 4 5" />
+            <line x1="12" x2="20" y1="19" y2="19" />
           </svg>
           {words().join(" ")}
         </kbd>
       </div>
-      <div class="divider"></div>
-      <div class="w-full flex relative py-1">
-        <Switch>
-          <Match when={getBottomPanel() === 0}>
-            <Presets />
-          </Match>
-          <Match when={getBottomPanel() === 1}>
-            <Features />
-          </Match>
-        </Switch>
+      <div class="divider my-2"></div>
+      <div class="w-full flex flex-col relative">
+        <div class="flex items-center py-2 px-3 overflow-auto bg-base-100 rounded-md">
+          <span class="text-lg font-bold">Presets</span>
+          <div class="divider divider-horizontal mx-1"></div>
+          <Presets />
+        </div>
+        <Features />
       </div>
     </div>
   );

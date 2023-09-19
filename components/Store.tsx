@@ -1,15 +1,11 @@
 import { createStore } from "solid-js/store";
-import features from "assets/features.json";
-import {
-  batch,
-  createContext,
-  createMemo,
-  createSignal,
-  type JSX,
-} from "solid-js";
+import features from "../assets/features.json";
+import { batch, createContext, createMemo, type JSX } from "solid-js";
 import type { Definition } from "../types";
+import Features from "#components/Features";
 
 export type Features = keyof typeof features;
+export type FeaturesAll = `${Features}:${string}`;
 
 function filteredObject<T extends object>(
   obj: T,
@@ -27,10 +23,6 @@ function initStore() {
 
   const inViewFeatures = createMemo(() =>
     filteredObject(currentFeatures, (o, k) => Boolean(o[k].inview)),
-  );
-
-  const drawerFeatures = createMemo(() =>
-    filteredObject(currentFeatures, (o, k) => !o[k].inview),
   );
 
   function moveFeature(k: Features) {
@@ -59,26 +51,40 @@ function initStore() {
     ),
   );
 
-  const [getBottomPanel, setBottomPanel] = createSignal(0);
+  const featuresLabels = createMemo<string[]>(
+    () =>
+      Object.values(inViewFeatures())
+        .map((fs) => fs!.features.find((f) => f.selected)?.label)
+        .filter(Boolean) as string[],
+  );
 
-  function selectPreset(ks: Features[]) {
+  function selectPreset(ks: (Features | FeaturesAll)[]) {
+    const nms: Features[] = ks.map((k) =>
+      k.includes(":") ? (k.split(":")[0] as Features) : (k as Features),
+    );
+
+    const fts: FeaturesAll[] = ks.filter((k): k is FeaturesAll =>
+      k.includes(":"),
+    );
+
     batch(() => {
       (Object.keys(currentFeatures) as Features[]).forEach((k) => {
-        setCurrentFeatures(k, "inview", ks.includes(k));
+        setCurrentFeatures(k, "inview", nms.includes(k));
       });
-      setBottomPanel(1);
+      fts.forEach((ft) => {
+        const [namespace, f] = ft.split(":");
+        selectFeature(namespace as Features, f);
+      });
     });
   }
 
   return {
     inViewFeatures,
-    drawerFeatures,
     moveFeature,
     selectFeature,
     featuresValues,
+    featuresLabels,
     currentFeatures,
-    getBottomPanel,
-    setBottomPanel,
     selectPreset,
   };
 }

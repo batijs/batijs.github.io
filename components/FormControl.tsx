@@ -11,18 +11,18 @@ export function FormControl(props: {
   label: string;
   flipLabel?: string;
   class?: string;
+  classList?: JSX.CustomAttributes<HTMLFieldSetElement>["classList"];
   style?: string;
 }) {
   return (
-    <div
+    <fieldset
       class={clsx("form-control", props.class)}
       style={props.style}
+      classList={props.classList}
       use:flip={props.flipLabel}
     >
-      <label class="label">
-        <span class="label-text">{props.label}</span>
-      </label>
+      <legend class="label text-lg font-bold ml-1">{props.label}</legend>
       {props.children}
-    </div>
+    </fieldset>
   );
 }

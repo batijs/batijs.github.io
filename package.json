@@ -19,20 +19,20 @@
   ],
   "author": "Joël Charles",
   "devDependencies": {
-    "@actions/core": "^1.10.0",
+    "@actions/core": "^1.10.1",
     "@batijs/core": "latest",
-    "@hattip/adapter-node": "^0.0.34",
-    "@hattip/router": "^0.0.34",
-    "@hattip/vite": "^0.0.34",
+    "@hattip/adapter-node": "^0.0.35",
+    "@hattip/router": "^0.0.35",
+    "@hattip/vite": "^0.0.35",
     "autoprefixer": "^10.4.15",
     "babel-preset-solid": "^1.7.7",
     "bumpp": "^9.2.0",
     "clsx": "^2.0.0",
-    "cross-fetch": "^3.1.8",
-    "daisyui": "^3.6.3",
-    "esbuild": "^0.18.20",
+    "cross-fetch": "^4.0.0",
+    "daisyui": "^3.7.5",
+    "esbuild": "^0.19.3",
     "hattip": "^0.0.33",
-    "jiti": "^1.19.3",
+    "jiti": "^1.20.0",
     "postcss": "^8.4.28",
     "solid-element": "^1.7.1",
     "solid-js": "^1.7.11",
@@ -42,8 +42,7 @@
     "vike-solid": "^0.1.1",
     "vite": "^4.4.9",
     "vite-plugin-solid": "^2.7.0",
-    "vite-plugin-ssr": "^0.4.138",
-    "vite-tsconfig-paths": "^4.2.0"
+    "vite-plugin-ssr": "^0.4.141"
   },
   "files": [
     "dist/elements"
