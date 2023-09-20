@@ -18,7 +18,7 @@
       "virtual:vite-plugin-ssr:importPageCode:client:/pages/_error",
       "virtual:vite-plugin-ssr:importPageCode:client:/pages/index"
     ],
-    "file": "assets/entries/entry-client-routing.d7407ab9.js",
+    "file": "assets/entries/entry-client-routing.64c962e7.js",
     "isEntry": true,
     "src": "node_modules/.pnpm/vite-plugin-ssr@0.4.141_vite@4.4.9/node_modules/vite-plugin-ssr/dist/esm/client/client-routing-runtime/entry.js"
   },
