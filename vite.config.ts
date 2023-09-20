@@ -109,7 +109,6 @@ export default defineConfig(({ mode, command }) => {
       solid({
         vps: {
           prerender: true,
-          disableAutoFullBuild: false,
         },
       }),
     ],
