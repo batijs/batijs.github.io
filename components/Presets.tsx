@@ -40,7 +40,13 @@ export default function Presets() {
       />
       <Preset
         title="Next.js"
-        features={["framework:react", "auth", "rpc", "hosting:vercel"]}
+        features={[
+          "framework:react",
+          "auth",
+          "rpc",
+          "server",
+          "hosting:vercel",
+        ]}
       />
       <Preset title="E-commerce" features={["framework"]} disabled={true} />
     </div>
