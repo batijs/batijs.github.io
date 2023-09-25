@@ -1,11 +1,12 @@
-import { createMemo, useContext } from "solid-js";
-import Features from "#components/Features";
-import { StoreContext } from "#components/Store";
+import { copy } from "#components/Copy.js";
+import Description from "#components/Description.js";
+import Features from "#components/Features.js";
+import { flip } from "#components/Flip.js";
+import Messages from "#components/Messages.js";
+import Presets from "#components/Presets.js";
+import { StoreContext } from "#components/Store.js";
+import { createMemo, Show, useContext } from "solid-js";
 import features from "../assets/features.json";
-import { copy } from "#components/Copy";
-import { flip } from "#components/Flip";
-import Presets from "#components/Presets";
-import Description from "#components/Description";
 
 // avoid removing import when trying to optimize them
 // https://github.com/solidjs/solid/discussions/845
@@ -13,22 +14,14 @@ const _copy = copy;
 const _flip = flip;
 
 export function Widget(props: { theme?: string; widget: boolean }) {
-  const { featuresValues } = useContext(StoreContext);
+  const { featuresValues, rules } = useContext(StoreContext);
   const keys = Object.keys(features);
 
   function getFlags() {
-    return keys
-      .filter((ns) => featuresValues()[ns])
-      .map((ns) => `--${featuresValues()[ns]}`);
+    return keys.filter((ns) => featuresValues()[ns]).map((ns) => `--${featuresValues()[ns]}`);
   }
 
-  const words = createMemo(() => [
-    "pnpm",
-    "create",
-    "@batijs/app",
-    ...getFlags(),
-    "my-app",
-  ]);
+  const words = createMemo(() => ["pnpm", "create", "@batijs/app", ...getFlags(), "my-app"]);
 
   return (
     <div
@@ -65,6 +58,12 @@ export function Widget(props: { theme?: string; widget: boolean }) {
           {words().join(" ")}
         </kbd>
       </div>
+      <Show when={rules().size > 0}>
+        <div class="flex flex-col gap-2 leading-6 rounded-md mt-4">
+          <Messages error={rules().error} warning={rules().warning} info={rules().info} />
+        </div>
+      </Show>
+
       <div class="divider my-2"></div>
       <div class="w-full flex flex-col relative">
         <div class="flex items-center py-2 px-3 overflow-auto bg-base-100 rounded-md">

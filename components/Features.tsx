@@ -1,12 +1,11 @@
+import { FormControl } from "#components/FormControl.js";
+import { StoreContext, type FeaturesType } from "#components/Store.js";
 import { createMemo, For, useContext } from "solid-js";
-import { FormControl } from "#components/FormControl";
-import { type Features, StoreContext } from "#components/Store";
 
 export default function Features() {
-  const { currentFeatures, selectFeature, moveFeature } =
-    useContext(StoreContext);
+  const { currentFeatures, selectFeature, moveFeature } = useContext(StoreContext);
 
-  const keys = createMemo(() => Object.keys(currentFeatures) as Features[]);
+  const keys = createMemo(() => Object.keys(currentFeatures) as FeaturesType[]);
 
   return (
     <>
@@ -35,8 +34,7 @@ export default function Features() {
                       <label
                         class="flex"
                         classList={{
-                          "opacity-50 cursor-not-allowed":
-                            f.disabled || feature.disabled,
+                          "opacity-50 cursor-not-allowed": f.disabled || feature.disabled,
                         }}
                       >
                         <div class="flex justify-center items-center px-2.5">
@@ -44,9 +42,7 @@ export default function Features() {
                             type="checkbox"
                             checked={f.inview && feature.selected}
                             classList={{
-                              "checkbox-success": Boolean(
-                                f.inview && feature.selected,
-                              ),
+                              "checkbox-success": Boolean(f.inview && feature.selected),
                               "border-solid": !(f.disabled || feature.disabled),
                             }}
                             class="checkbox rounded"
@@ -61,17 +57,11 @@ export default function Features() {
                         </div>
                         <div class="inline-flex gap-2 items-center">
                           {feature.image && (
-                            <img
-                              class="max-w-5 max-h-5"
-                              src={feature.image}
-                              alt={`${feature.value} logo`}
-                            />
+                            <img class="max-w-5 max-h-5" src={feature.image} alt={`${feature.value} logo`} />
                           )}
                           <div class="inline-flex flex-col gap-0 leading-5">
                             <span>{feature.label}</span>
-                            {feature.alt && (
-                              <span class="text-xs">{feature.alt}</span>
-                            )}
+                            {feature.alt && <span class="text-xs">{feature.alt}</span>}
                           </div>
                         </div>
                       </label>

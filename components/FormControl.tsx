@@ -1,6 +1,6 @@
-import { type JSX } from "solid-js";
-import { flip } from "./Flip";
 import clsx from "clsx";
+import { type JSX } from "solid-js";
+import { flip } from "./Flip.js";
 
 // avoid removing import when trying to optimize them
 // https://github.com/solidjs/solid/discussions/845

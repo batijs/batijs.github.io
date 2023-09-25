@@ -1,14 +1,10 @@
-import { useContext } from "solid-js";
-import {
-  type Features,
-  type FeaturesAll,
-  StoreContext,
-} from "#components/Store";
+import { StoreContext, type FeaturesAll, type FeaturesType } from "#components/Store.js";
 import clsx from "clsx";
+import { useContext } from "solid-js";
 
 function Preset(props: {
   title: string;
-  features: (Features | FeaturesAll)[];
+  features: (FeaturesType | FeaturesAll)[];
   class?: string;
   disabled?: boolean;
 }) {
@@ -34,20 +30,8 @@ export default function Presets() {
     <div class="w-full flex box-border gap-2">
       <Preset title="Plain Vike" features={[]} />
       <Preset title="Frontend" features={["framework:solid", "uikit"]} />
-      <Preset
-        title="Full-stack"
-        features={["framework:solid", "rpc", "auth", "db", "uikit", "server"]}
-      />
-      <Preset
-        title="Next.js"
-        features={[
-          "framework:react",
-          "auth",
-          "rpc",
-          "server",
-          "hosting:vercel",
-        ]}
-      />
+      <Preset title="Full-stack" features={["framework:solid", "rpc", "auth", "db", "uikit", "server"]} />
+      <Preset title="Next.js" features={["framework:react", "auth", "rpc", "server", "hosting:vercel"]} />
       <Preset title="E-commerce" features={["framework"]} disabled={true} />
     </div>
   );
