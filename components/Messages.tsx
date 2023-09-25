@@ -12,7 +12,7 @@ function Alert(props: { children?: ValidComponent[]; info?: boolean; warning?: b
       }}
     >
       <ul
-        class="flex flex-col gap-2 tracking-wide list-custom p-2 rounded-md dark:text-neutral-200"
+        class="flex flex-col gap-2 tracking-wide list-custom p-2 rounded-md"
         classList={{
           "bg-info/25 list-info": props.info,
           "bg-warning/25 list-warning": props.warning,
