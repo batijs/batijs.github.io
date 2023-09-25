@@ -1,3 +1,4 @@
+import faviconUrl from "#assets/logo.svg";
 import vikeSolid from "vike-solid";
 import type { Config } from "vike/types";
 import Head from "../layouts/Head";
@@ -10,6 +11,7 @@ export default {
   Head: Head,
   // <title>
   title: "Bati",
+  favicon: faviconUrl,
   // <meta name="description">
   description: "Bati",
   extends: vikeSolid,

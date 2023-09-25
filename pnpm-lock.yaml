@@ -75,8 +75,8 @@ devDependencies:
     specifier: ^0.4.142
     version: 0.4.142(vite@4.4.9)
   vike-solid:
-    specifier: ^0.2.0
-    version: 0.2.0(solid-js@1.7.12)(vike@0.4.142)(vite@4.4.9)
+    specifier: ^0.2.1
+    version: 0.2.1(solid-js@1.7.12)(vike@0.4.142)(vite@4.4.9)
   vite:
     specifier: ^4.4.9
     version: 4.4.9
@@ -3044,8 +3044,8 @@ packages:
     resolution: {integrity: sha512-hGdgQozCsQJMyfK5urgFcWEqsSSrK63Awe0t/IMR0bZ0QMtnuaiHzThW81guu3qx9abLi99NEuiaN6P9gVYsNg==}
     dev: true
 
-  /vike-solid@0.2.0(solid-js@1.7.12)(vike@0.4.142)(vite@4.4.9):
-    resolution: {integrity: sha512-1Za1/IUs/aL6LMdDZulViXIRSdGbgxlnuTGPXgEKQVDddx0qV0lNcminLx71D8LxtTYe1LmMlkfrkk7rFf7Czg==}
+  /vike-solid@0.2.1(solid-js@1.7.12)(vike@0.4.142)(vite@4.4.9):
+    resolution: {integrity: sha512-Ab1QQxvUdJ8udXfkPA2JOJVwXAHJzyJ/0q5VFuGwzYdW7B2HCjCI3R0R2vPkuA2iomo6O4uCBhmPQh9dzOPELQ==}
     hasBin: true
     peerDependencies:
       solid-js: ^1.7.12
