@@ -1,8 +1,0 @@
-.DS_Store
-node_modules
-dist
-
-pnpm-lock.yaml
-
-# We use the SquirrellyJS template engine in these files and prettier breaks the syntax:
-*.vue
